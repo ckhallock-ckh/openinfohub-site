@@ -1,16 +1,17 @@
 ---
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
-
 import RelatedPages from "../../../../components/RelatedPages.astro";
-const tags = ["groundhog", "deterrence", "prevention", "exclusion"];
 
-const title = "How to deter groundhogs and get rid of them safely";
-const description =
-  "A practical, step-by-step guide to deterring groundhogs, preventing burrows, and knowing when removal or a pro is the best option.";
-const canonical = "https://openinfohub.net/home/pest-control/deterring-groundhogs/";
-const updated = "2026-01-16";
+export const frontmatter = {
+  title: "How to deter groundhogs and get rid of them safely",
+  description:
+    "A practical, step-by-step guide to deterring groundhogs, preventing burrows, and knowing when removal or a pro is the best option.",
+  canonical: "https://openinfohub.net/home/pest-control/deterring-groundhogs/",
+  updated: "2026-01-16",
+  tags: ["groundhog", "deterrence", "prevention", "exclusion"],
+};
 
-export const frontmatter = { title, description, tags, updated, canonical };
+const { title, description, canonical, updated, tags } = frontmatter;
 
 // Simple FAQ schema (safe, helpful)
 const faqSchema = {
@@ -60,6 +61,9 @@ const faqSchema = {
   ]
 };
 ---
+
+
+
 
 <BaseLayout title={title} description={description} canonical={canonical}>
   <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">

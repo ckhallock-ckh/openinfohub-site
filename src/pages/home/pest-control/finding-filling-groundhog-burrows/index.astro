@@ -2,18 +2,16 @@
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import RelatedPages from "../../../../components/RelatedPages.astro";
 
-const title = "How to Find and Safely Fill Groundhog Burrows";
-const description =
-  "Learn how to locate all groundhog burrow entrances, confirm activity, and fill tunnels correctly to prevent collapse, odors, and repeat digging.";
-const canonical = "https://openinfohub.net/home/pest-control/finding-filling-groundhog-burrows/";
-const updated = "2026-01-16";
+export const frontmatter = {
+  title: "How to Find and Safely Fill Groundhog Burrows",
+  description:
+    "Learn how to locate all groundhog burrow entrances, confirm activity, and fill tunnels correctly to prevent collapse, odors, and repeat digging.",
+  canonical: "https://openinfohub.net/home/pest-control/finding-filling-groundhog-burrows/",
+  updated: "2026-01-16",
+  tags: ["groundhog", "burrows", "filling", "prevention", "deterrence"],
+};
 
-// Tags for future-proof related pages
-const tags = ["groundhog", "burrows", "filling", "prevention", "deterrence"];
-
-
-export const frontmatter = { title, description, tags, updated, canonical };
-
+const { title, description, canonical, updated, tags } = frontmatter;
 
 // FAQ schema
 const faqSchema = {
@@ -55,6 +53,12 @@ const faqSchema = {
   ]
 };
 ---
+
+
+
+
+
+
 
 <BaseLayout title={title} description={description} canonical={canonical}>
   {/* Breadcrumbs */}
