@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 
+import RelatedPages from "../../../../components/RelatedPages.astro";
+const tags = ["groundhog", "burrows", "foundation", "structural-risk"];
+
 const title = "How to deter groundhogs and get rid of them safely";
 const description =
   "A practical, step-by-step guide to deterring groundhogs, preventing burrows, and knowing when removal or a pro is the best option.";
@@ -182,14 +185,8 @@ const faqSchema = {
     </p>
   </section>
 
-  <section style="border:1px dashed #d1d5db; border-radius:12px; padding:16px; margin-bottom:18px;">
-    <h2 style="margin:0 0 10px; font-size:18px;">Related pages</h2>
-    <ul style="margin:0; padding-left:18px;">
-      <li><a href="/home/pest-control/groundhog-burrows-foundation-damage/">Can groundhog burrows cause foundation damage?</a></li>
-      <li><a href="/home/pest-control/">Pest Control hub</a></li>
-      <!-- Add more related links here as you publish them -->
-    </ul>
-  </section>
+
+<RelatedPages tags={tags} currentUrl={Astro.url.pathname} />
 
   <section style="font-size:13px; color:#6b7280;">
     <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
