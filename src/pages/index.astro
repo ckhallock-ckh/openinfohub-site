@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Pull all pages that export `frontmatter`
 // NOTE: This assumes your article pages use: export const frontmatter = { title, description, tags, updated, canonical };
-const modules = import.meta.glob("../home/**/index.astro", { eager: true });
+const modules = import.meta.glob("./home/**/index.astro", { eager: true });
 
 // Build a list of pages (excluding the Home page itself)
 const allPages = Object.entries(modules)
