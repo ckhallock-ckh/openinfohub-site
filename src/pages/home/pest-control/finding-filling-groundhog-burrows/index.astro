@@ -1,0 +1,163 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import RelatedPages from "../../../../components/RelatedPages.astro";
+
+const title = "How to Find and Safely Fill Groundhog Burrows";
+const description =
+  "Learn how to locate all groundhog burrow entrances, confirm activity, and fill tunnels correctly to prevent collapse, odors, and repeat digging.";
+const canonical = "https://openinfohub.net/home/pest-control/finding-filling-groundhog-burrows/";
+const updated = "2026-01-16";
+
+// Tags for future-proof related pages
+const tags = ["groundhog", "burrows", "filling", "prevention", "deterrence"];
+
+// FAQ schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I know if a groundhog burrow is active?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Smooth the soil at the burrow entrance and check for fresh digging within 24–48 hours. Continued digging, tracks, or loose soil usually indicate activity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I just fill a groundhog hole with dirt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only after confirming the burrow is inactive or the animal has been removed. Filling an active burrow can trap an animal inside, cause odor problems, or force new exits to appear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best material to fill groundhog tunnels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A mix of compacted soil and gravel works best. Fill in layers and compact each layer to reduce settling and collapse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do filled burrows sometimes reopen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Burrows reopen when the groundhog is still present, the fill is not compacted, or other entrances were missed. Multiple entrances are common."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  {/* Breadcrumbs */}
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/home/">Home</a> → <a href="/home/pest-control/">Pest Control</a> → <strong>Groundhogs</strong>
+  </nav>
+
+  {/* Title + updated */}
+  <h1 style="margin:0 0 6px;">How to Find and Safely Fill Groundhog Burrows</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  {/* Direct answer */}
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;">
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      <strong>Groundhog burrows should only be filled after you confirm they are inactive.</strong>
+      The safest approach is to locate all entrances, verify activity has stopped, then fill the tunnels
+      in layers using compacted soil and gravel. Filling too early often leads to odors, collapse,
+      or new exit holes.
+    </p>
+  </section>
+
+  {/* Quick reference */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick reference</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Active burrow:</strong> do not fill yet</li>
+      <li><strong>Inactive burrow:</strong> fill and compact in layers</li>
+      <li><strong>Near structures:</strong> consider professional help</li>
+    </ul>
+  </section>
+
+  {/* Explanation */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Why groundhog burrows are tricky to fill</h2>
+    <p>
+      Groundhog burrow systems are larger than most people expect. A single entrance can connect to
+      multiple tunnels, chambers, and emergency exits. If even one entrance is missed, the burrow
+      often reopens.
+    </p>
+    <p>
+      Burrows near foundations, decks, or sheds are especially risky because collapse or settling
+      can affect structures.
+    </p>
+  </section>
+
+  {/* Steps */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to do (safe order)</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li><strong>Locate all entrances:</strong> walk the area and look for large holes (10–12 inches wide).</li>
+      <li><strong>Check for activity:</strong> smooth soil and monitor for 24–48 hours.</li>
+      <li><strong>Remove or exclude first:</strong> confirm the animal is gone before filling.</li>
+      <li><strong>Fill in layers:</strong> alternate soil and gravel, compacting each layer.</li>
+      <li><strong>Finish the surface:</strong> grade soil to shed water and reseed if needed.</li>
+    </ol>
+  </section>
+
+  {/* Common mistakes */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>Filling an active burrow with the animal inside.</li>
+      <li>Using loose dirt without compaction.</li>
+      <li>Missing secondary or hidden entrances.</li>
+      <li>Ignoring drainage, which causes soil to wash out.</li>
+    </ul>
+  </section>
+
+  {/* FAQ */}
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">How long should I wait before filling a burrow?</h3>
+    <p style="margin:0 0 12px;">
+      Wait until there is no fresh digging for at least 48 hours. Longer may be needed if multiple entrances exist.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">Should I use concrete to fill the hole?</h3>
+    <p style="margin:0 0 12px;">
+      Concrete is usually unnecessary and can interfere with drainage. Compacted soil and gravel are usually sufficient.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">Why does the hole keep coming back?</h3>
+    <p style="margin:0;">
+      Either the groundhog is still present, not all entrances were found, or the fill was not compacted properly.
+    </p>
+  </section>
+
+  {/* Related pages (auto via tags) */}
+  <RelatedPages tags={tags} currentUrl={Astro.url.pathname} />
+
+  {/* Sources / assumptions */}
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>General wildlife control best practices: confirm inactivity before sealing burrows.</li>
+      <li>Compaction and drainage are critical to prevent collapse and repeat digging.</li>
+      <li>Informational only; not a substitute for professional wildlife or structural advice.</li>
+    </ul>
+  </section>
+
+  {/* FAQ schema */}
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</BaseLayout>
+
