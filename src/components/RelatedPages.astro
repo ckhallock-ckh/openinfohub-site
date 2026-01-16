@@ -1,37 +1,43 @@
 ---
 /**
- * RelatedPages.astro (Vite-safe)
- * - Uses a literal Astro.glob pattern (required by Vite)
- * - Filters by shared tags
+ * RelatedPages.astro
+ * Works with .astro pages by reading exported values (frontmatter OR named exports).
  *
  * Usage:
  *   <RelatedPages tags={tags} currentUrl={Astro.url.pathname} />
  */
 
-const {
-  tags = [],
-  currentUrl = "",
-  title = "Related pages",
-  max = 5,
-} = Astro.props;
+const { tags = [], currentUrl = "", title = "Related pages", max = 5 } = Astro.props;
 
 const currentTags = (Array.isArray(tags) ? tags : [])
   .map((t) => String(t).toLowerCase().trim())
   .filter(Boolean);
 
-// IMPORTANT: literal glob string (cannot be a variable)
+// IMPORTANT: must be a literal for Vite/Cloudflare
 const pages = await Astro.glob("../pages/home/pest-control/*/index.astro");
+
+function normTags(value) {
+  if (!value) return [];
+  if (Array.isArray(value)) {
+    return value.map((t) => String(t).toLowerCase().trim()).filter(Boolean);
+  }
+  return [String(value).toLowerCase().trim()].filter(Boolean);
+}
 
 const related = pages
   .map((p) => {
-    const pTags = (p.frontmatter?.tags ?? [])
-      .map((t) => String(t).toLowerCase().trim())
-      .filter(Boolean);
+    // Support both patterns:
+    // - export const frontmatter = { ... }
+    // - export const tags/title/description directly
+    const fm = p.frontmatter ?? p.frontmatter?.frontmatter ?? p.frontmatter; // harmless, defensive
+    const pTags = normTags((fm && fm.tags) ?? p.tags);
+    const pTitle = (fm && fm.title) ?? p.title ?? "Untitled";
+    const pDescription = (fm && fm.description) ?? p.description ?? "";
 
     return {
       url: p.url,
-      title: p.frontmatter?.title ?? "Untitled",
-      description: p.frontmatter?.description ?? "",
+      title: pTitle,
+      description: pDescription,
       tags: pTags,
     };
   })
