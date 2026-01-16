@@ -1,66 +1,113 @@
 ---
-const siteName = "OpenInfoHub";
-const description =
-  "OpenInfoHub provides clear, straightforward answers to common questions about home, technology, and everyday problems.";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const links = [
-  { href: "/home/", label: "Home" },
-  { href: "/home/pest-control/", label: "Pest Control" },
+// Pull all pages that export `frontmatter`
+// NOTE: This assumes your article pages use: export const frontmatter = { title, description, tags, updated, canonical };
+const modules = import.meta.glob("../home/**/index.astro", { eager: true });
+
+// Build a list of pages (excluding the Home page itself)
+const allPages = Object.entries(modules)
+  .map(([path, mod]) => {
+    const fm = mod.frontmatter;
+    if (!fm?.title || !fm?.canonical) return null;
+
+    return {
+      path,
+      title: fm.title,
+      description: fm.description ?? "",
+      tags: fm.tags ?? [],
+      updated: fm.updated ?? "1970-01-01",
+      canonical: fm.canonical
+    };
+  })
+  .filter(Boolean)
+  // exclude /home/ itself
+  .filter((p) => !p.canonical.endsWith("/home/"))
+  // newest first
+  .sort((a, b) => String(b.updated).localeCompare(String(a.updated)));
+
+const latest = allPages.slice(0, 8);
+
+// Cluster “cards” (manual list, but only a few)
+const clusters = [
+  {
+    title: "Pest Control",
+    href: "/home/pest-control/",
+    desc: "Groundhogs, burrows, prevention, and when to call a pro."
+  }
 ];
+
+const title = "Home";
+const description =
+  "OpenInfoHub provides clear, practical answers to common homeowner questions—organized by topic and easy to skim.";
+const canonical = "https://openinfohub.net/home/";
+const updated = "2026-01-16";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{siteName}</title>
-    <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.png" type="image/png" />
-    <link rel="canonical" href="https://openinfohub.net/" />
-  </head>
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <h1 style="margin:0 0 8px;">OpenInfoHub</h1>
+  <p style="margin:0 0 18px; color:#cbd5e1;">
+    Clear, practical answers for homeowner problems—organized by topic. No fluff, just what to do next.
+  </p>
 
-  <body>
-    <main
-      style="
-        max-width: 860px;
-        margin: 48px auto;
-        font-family: system-ui;
-        line-height: 1.7;
-        padding: 0 16px;
-      "
-    >
-      <header style="margin-bottom: 22px;">
-        <h1 style="margin:0 0 10px;">OpenInfoHub</h1>
-        <p style="margin:0; color:#374151;">
-          {description}
-        </p>
-      </header>
+  {/* Start here / Clusters */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Start here</h2>
 
-      <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
-        <h2 style="margin:0 0 10px; font-size:18px;">Browse topics</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
+      {clusters.map((c) => (
+        <a
+          href={c.href}
+          style="display:block; text-decoration:none; border:1px solid rgba(255,255,255,.10); border-radius:12px; padding:14px; background:rgba(255,255,255,.02);"
+        >
+          <div style="font-weight:700; color:#e5e7eb; margin-bottom:6px;">{c.title}</div>
+          <div style="font-size:13px; color:#9ca3af; line-height:1.5;">{c.desc}</div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {/* Latest answers (auto) */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Latest answers</h2>
+
+    <div style="border:1px solid rgba(255,255,255,.10); border-radius:12px; padding:14px; background:rgba(255,255,255,.02);">
+      {latest.length === 0 ? (
+        <p style="margin:0; color:#9ca3af;">New answers will appear here as pages are published.</p>
+      ) : (
         <ul style="margin:0; padding-left:18px;">
-          {links.map((l) => (
-            <li><a href={l.href}>{l.label}</a></li>
+          {latest.map((p) => (
+            <li style="margin:0 0 10px;">
+              <a href={new URL(p.canonical).pathname} style="font-weight:600;">
+                {p.title}
+              </a>
+              <div style="font-size:13px; color:#9ca3af; margin-top:3px;">
+                {p.description}
+              </div>
+            </li>
           ))}
         </ul>
-      </section>
+      )}
+    </div>
+  </section>
 
-      <section style="border:1px dashed #d1d5db; border-radius:12px; padding:16px;">
-        <h2 style="margin:0 0 10px; font-size:18px;">Latest additions</h2>
-        <ul style="margin:0; padding-left:18px;">
-          <li>
-            <a href="/home/pest-control/groundhog-burrows-foundation-damage/">
-              Can groundhog burrows cause foundation damage?
-            </a>
-          </li>
-        </ul>
-      </section>
+  {/* How we write / trust */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to expect</h2>
+    <ul style="margin:0; padding-left:18px; color:#cbd5e1;">
+      <li>Direct answer first, then steps and common mistakes.</li>
+      <li>Safety-first order of operations (don’t trap animals inside, don’t create odors, etc.).</li>
+      <li>We keep pages skimmable with tables, checklists, and FAQs.</li>
+    </ul>
+  </section>
 
-      <footer style="margin-top:22px; font-size:13px; color:#6b7280;">
-        <p style="margin:0;">
-          This site is informational. If you have a safety-critical issue, consider contacting a qualified professional.
-        </p>
-      </footer>
-    </main>
-  </body>
-</html>
+  {/* Soft CTA */}
+  <section style="border:1px dashed rgba(255,255,255,.20); border-radius:12px; padding:14px;">
+    <h2 style="margin:0 0 8px; font-size:18px;">Browse topics</h2>
+    <p style="margin:0 0 10px; color:#9ca3af;">
+      Start with Pest Control, then we’ll expand into other homeowner categories as the site grows.
+    </p>
+    <a href="/home/pest-control/" style="font-weight:700;">Go to Pest Control →</a>
+  </section>
+</BaseLayout>
+
