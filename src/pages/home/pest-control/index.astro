@@ -2,8 +2,37 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
 const title = "Pest Control";
-const description = "Straightforward pest control answers: prevention, identification, and when to call a pro.";
+const description =
+  "Straightforward pest control answers: prevention, identification, and when to call a pro.";
 const canonical = "https://openinfohub.net/home/pest-control/";
+
+/**
+ * Auto-list all child pages under:
+ *   src/pages/home/pest-control/<slug>/index.astro
+ *
+ * IMPORTANT:
+ * - For best results, each child page should have frontmatter:
+ *     ---
+ *     title: "..."
+ *     description: "..."
+ *     ---
+ */
+const pages = await Astro.glob("./*/index.astro");
+
+const guides = pages
+  .map((p) => {
+    const slug = p.url.split("/").filter(Boolean).slice(-1)[0]; // last path segment
+    const fallbackTitle = slug
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    return {
+      url: p.url,
+      title: p.frontmatter?.title ?? fallbackTitle,
+      description: p.frontmatter?.description ?? "",
+    };
+  })
+  .sort((a, b) => a.title.localeCompare(b.title));
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical}>
@@ -17,14 +46,28 @@ const canonical = "https://openinfohub.net/home/pest-control/";
   </p>
 
   <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
-    <h2 style="margin:0 0 10px; font-size:18px;">Start here</h2>
-    <ul style="margin:0; padding-left:18px;">
-      <li>
-        <a href="/home/pest-control/groundhog-burrows-foundation-damage/">
-          Can groundhog burrows cause foundation damage?
-        </a>
-      </li>
-    </ul>
+    <h2 style="margin:0 0 10px; font-size:18px;">All Pest Control Guides</h2>
+
+    {guides.length ? (
+      <ul style="margin:0; padding-left:18px;">
+        {guides.map((g) => (
+          <li style="margin: 10px 0;">
+            <a href={g.url} style="font-weight:600;">
+              {g.title}
+            </a>
+            {g.description ? (
+              <div style="color:#64748b; font-size:13px; margin-top:4px;">
+                {g.description}
+              </div>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p style="margin:0; color:#6b7280;">
+        No guides found yet. Add a folder like <code>pest-control/your-topic/index.astro</code>.
+      </p>
+    )}
   </section>
 
   <section style="border:1px dashed #d1d5db; border-radius:12px; padding:16px;">
@@ -37,3 +80,4 @@ const canonical = "https://openinfohub.net/home/pest-control/";
     </ul>
   </section>
 </BaseLayout>
+
