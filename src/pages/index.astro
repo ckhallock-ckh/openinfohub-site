@@ -2,6 +2,11 @@
 const siteName = "OpenInfoHub";
 const description =
   "OpenInfoHub provides clear, straightforward answers to common questions about home, technology, and everyday problems.";
+
+const links = [
+  { href: "/home/", label: "Home" },
+  { href: "/home/pest-control/", label: "Pest Control" },
+];
 ---
 
 <html lang="en">
@@ -11,16 +16,51 @@ const description =
     <title>{siteName}</title>
     <meta name="description" content={description} />
     <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://openinfohub.net/" />
   </head>
+
   <body>
-    <main style="max-width: 760px; margin: 48px auto; font-family: system-ui; line-height: 1.65; padding: 0 16px;">
-      <h1 style="margin:0 0 12px;">OpenInfoHub</h1>
-      <p style="margin:0 0 14px;">
-        {description}
-      </p>
-      <p style="margin:0;">
-        New content is being added regularly.
-      </p>
+    <main
+      style="
+        max-width: 860px;
+        margin: 48px auto;
+        font-family: system-ui;
+        line-height: 1.7;
+        padding: 0 16px;
+      "
+    >
+      <header style="margin-bottom: 22px;">
+        <h1 style="margin:0 0 10px;">OpenInfoHub</h1>
+        <p style="margin:0; color:#374151;">
+          {description}
+        </p>
+      </header>
+
+      <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
+        <h2 style="margin:0 0 10px; font-size:18px;">Browse topics</h2>
+        <ul style="margin:0; padding-left:18px;">
+          {links.map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+        </ul>
+      </section>
+
+      <section style="border:1px dashed #d1d5db; border-radius:12px; padding:16px;">
+        <h2 style="margin:0 0 10px; font-size:18px;">Latest additions</h2>
+        <ul style="margin:0; padding-left:18px;">
+          <li>
+            <a href="/home/pest-control/groundhog-burrows-foundation-damage/">
+              Can groundhog burrows cause foundation damage?
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <footer style="margin-top:22px; font-size:13px; color:#6b7280;">
+        <p style="margin:0;">
+          This site is informational. If you have a safety-critical issue, consider contacting a qualified professional.
+        </p>
+      </footer>
     </main>
   </body>
 </html>
