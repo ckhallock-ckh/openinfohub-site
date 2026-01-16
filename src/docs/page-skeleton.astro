@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import RelatedPages from "../../../../components/RelatedPages.astro";
+
+const title = "PAGE TITLE HERE";
+const description = "One-sentence description of what this page answers.";
+const canonical = "https://openinfohub.net/home/pest-control/your-slug/";
+const updated = "YYYY-MM-DD";
+
+// Tags drive related pages (future-proof)
+const tags = ["topic", "subcategory", "concept"];
+
+// Optional FAQ schema (include when page has FAQs)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Primary question users ask?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Short, direct answer that matches on-page content."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  {/* Breadcrumbs */}
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/home/">Home</a> → <a href="/home/pest-control/">Pest Control</a> → <strong>Topic</strong>
+  </nav>
+
+  {/* Page title + updated */}
+  <h1 style="margin:0 0 6px;">{title}</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  {/* Direct answer card */}
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;">
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      Clear, concise answer to the main question. No fluff.
+    </p>
+  </section>
+
+  {/* Optional table */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick reference</h2>
+    <p>Short explanation or table goes here.</p>
+  </section>
+
+  {/* Main explanation */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What’s going on</h2>
+    <p>Explain causes, context, and why this happens.</p>
+  </section>
+
+  {/* Steps / actions */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to do (safe order)</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li>Step one</li>
+      <li>Step two</li>
+      <li>Step three</li>
+    </ol>
+  </section>
+
+  {/* Common mistakes */}
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>Mistake one</li>
+      <li>Mistake two</li>
+    </ul>
+  </section>
+
+  {/* FAQ */}
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">FAQ question?</h3>
+    <p style="margin:0;">Answer.</p>
+  </section>
+
+  {/* Related pages (auto via tags) */}
+  <RelatedPages tags={tags} currentUrl={Astro.url.pathname} />
+
+  {/* Sources / assumptions */}
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>General best practices and common guidance.</li>
+      <li>Informational only; not professional advice.</li>
+    </ul>
+  </section>
+
+  {/* FAQ schema */}
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</BaseLayout>
+
