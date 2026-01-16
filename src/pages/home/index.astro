@@ -1,26 +1,21 @@
 ---
-const siteName = "OpenInfoHub";
-const description =
-  "OpenInfoHub provides clear, straightforward answers to common questions about home, technology, and everyday problems.";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Home Guides & Answers";
+const description = "Quick, practical answers for common homeowner questions and everyday problems.";
+const canonical = "https://openinfohub.net/home/";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{siteName}</title>
-    <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.png" type="image/png" />
-  </head>
-  <body>
-    <main style="max-width: 760px; margin: 48px auto; font-family: system-ui; line-height: 1.65; padding: 0 16px;">
-      <h1 style="margin:0 0 12px;">OpenInfoHub</h1>
-      <p style="margin:0 0 14px;">
-        {description}
-      </p>
-      <p style="margin:0;">
-        New content is being added regularly.
-      </p>
-    </main>
-  </body>
-</html>
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <h1 style="margin:0 0 8px;">Home</h1>
+  <p style="margin:0 0 18px;">
+    Browse homeowner topics and quick answers. We add new pages regularly.
+  </p>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px;">
+    <h2 style="margin:0 0 6px; font-size:18px;">Popular subcategories</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><a href="/home/pest-control/">Pest Control</a></li>
+    </ul>
+  </section>
+</BaseLayout>

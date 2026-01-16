@@ -1,26 +1,175 @@
 ---
-const siteName = "OpenInfoHub";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+
+const title = "Can groundhog burrows cause foundation damage?";
 const description =
-  "OpenInfoHub provides clear, straightforward answers to common questions about home, technology, and everyday problems.";
+  "Groundhog burrows can contribute to foundation issues by undermining soil, worsening drainage, and creating voids near slabs. Here’s what to watch for and what to do.";
+const canonical = "https://openinfohub.net/home/pest-control/groundhog-burrows-foundation-damage/";
+const updated = "2026-01-15";
+
+// Simple FAQ schema (safe, helpful)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can groundhog burrows really damage a foundation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They can contribute to damage by removing supporting soil, creating voids near slabs, and worsening water drainage. Actual structural failure is uncommon, but cracks and settlement risk can increase if burrows are close to the foundation and water is involved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How close is too close to the house?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Burrows within a few feet of the foundation, under steps, patios, or slabs are the most concerning—especially if you see soil sinking, cracking, or water pooling nearby."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I fill a groundhog hole immediately?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Don’t seal an active burrow with an animal inside. Confirm it’s inactive first, or handle removal/exclusion, then backfill and compact properly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I call a professional?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Call a wildlife control pro if you can’t confirm the burrow is inactive, and call a foundation/structural pro if you notice rapid cracking, doors sticking, sinking slabs, or significant voids near the foundation."
+      }
+    }
+  ]
+};
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{siteName}</title>
-    <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.png" type="image/png" />
-  </head>
-  <body>
-    <main style="max-width: 760px; margin: 48px auto; font-family: system-ui; line-height: 1.65; padding: 0 16px;">
-      <h1 style="margin:0 0 12px;">OpenInfoHub</h1>
-      <p style="margin:0 0 14px;">
-        {description}
-      </p>
-      <p style="margin:0;">
-        New content is being added regularly.
-      </p>
-    </main>
-  </body>
-</html>
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/home/">Home</a> → <a href="/home/pest-control/">Pest Control</a> → <strong>Groundhogs</strong>
+  </nav>
+
+  <h1 style="margin:0 0 6px;">Can groundhog burrows cause foundation damage?</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;">
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      <strong>Yes—groundhog burrows can contribute to foundation problems</strong> when tunnels remove supporting soil,
+      create voids under slabs/steps, or worsen drainage near the home. A single burrow rarely “destroys” a foundation on
+      its own, but it can <strong>increase settlement and cracking risk</strong>, especially if water is involved.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick risk table</h2>
+    <div style="overflow:auto;">
+      <table style="border-collapse:collapse; width:100%; min-width:640px;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Situation</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Risk level</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Why it matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Burrow entrance 10–20+ ft from house</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Low</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Less likely to undermine foundation soils</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Burrow within a few feet of foundation</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Medium</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Voids + erosion can weaken soil support</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Tunnels under steps/patio/slab near house</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">High</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Slabs can settle/crack if soil is removed</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Water pooling + soft/sinking soil near entrance</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">High</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Water accelerates erosion and settlement</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">How burrows cause problems</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Soil removal / voids:</strong> tunnels can leave hollow areas that settle over time.</li>
+      <li><strong>Drainage changes:</strong> burrows can channel water toward the foundation or soften soil.</li>
+      <li><strong>Undermining slabs:</strong> steps, patios, and sheds can crack or tilt if tunnels are underneath.</li>
+      <li><strong>Repeated freeze/thaw:</strong> wet soil near a foundation tends to move more with seasons.</li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to do (safe order)</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li><strong>Confirm activity:</strong> smooth the soil at the entrance and check for fresh digging within 24–48 hours.</li>
+      <li><strong>Don’t seal an active burrow:</strong> avoid trapping an animal inside (and avoid odor issues).</li>
+      <li><strong>Remove/exclude:</strong> once inactive or after removal, use heavy-gauge hardware cloth + backfill.</li>
+      <li><strong>Backfill correctly:</strong> add soil in layers and compact to reduce future settling.</li>
+      <li><strong>Fix drainage:</strong> downspouts should discharge away from the foundation; address pooling.</li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>Sealing holes immediately without confirming the burrow is inactive.</li>
+      <li>Using only loose dirt (no compaction) — it often sinks later.</li>
+      <li>Ignoring water issues near the foundation (this is what makes problems worse).</li>
+      <li>Leaving food sources nearby (gardens, fallen fruit, unsecured compost).</li>
+    </ul>
+  </section>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+    <h3 style="margin:0 0 6px; font-size:16px;">How deep are groundhog tunnels?</h3>
+    <p style="margin:0 0 12px;">
+      Depth varies by soil and location. What matters most is whether tunnels create voids near slabs or concentrate water near the foundation.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">Do I need a foundation contractor?</h3>
+    <p style="margin:0 0 12px;">
+      Consider it if you see fast-growing cracks, doors/windows sticking suddenly, sinking slabs/steps, or obvious voids near the foundation.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">Will repellents solve it?</h3>
+    <p style="margin:0;">
+      Repellents are unreliable long-term. Physical exclusion + habitat changes tends to work better than smells/ultrasonic devices.
+    </p>
+  </section>
+
+  <section style="border:1px dashed #d1d5db; border-radius:12px; padding:16px; margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Related pages</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><a href="/home/pest-control/">Pest Control hub</a></li>
+      <!-- Add more related links here as you publish them -->
+    </ul>
+  </section>
+
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>General wildlife control best practices: confirm activity, remove/exclude first, then seal and compact.</li>
+      <li>This page is informational and not a substitute for professional inspection of structural issues.</li>
+    </ul>
+  </section>
+
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</BaseLayout>
