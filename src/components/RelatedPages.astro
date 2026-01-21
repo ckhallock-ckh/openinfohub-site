@@ -1,10 +1,15 @@
 ---
 /**
  * RelatedPages.astro
- * Works with .astro pages by reading exported values (frontmatter OR named exports).
+ * Tag-based related links for Astro pages.
  *
  * Usage:
  *   <RelatedPages tags={tags} currentUrl={Astro.url.pathname} />
+ *
+ * Notes:
+ * - Uses import.meta.glob (Astro.glob is deprecated)
+ * - Works after removing /home by globbing all pages under src/pages
+ * - Never throws if no matches; it will simply render nothing
  */
 
 const { tags = [], currentUrl = "", title = "Related pages", max = 5 } = Astro.props;
@@ -13,10 +18,7 @@ const currentTags = (Array.isArray(tags) ? tags : [])
   .map((t) => String(t).toLowerCase().trim())
   .filter(Boolean);
 
-// IMPORTANT: must be a literal for Vite/Cloudflare
-const pages = await Astro.glob("../pages/home/pest-control/*/index.astro");
-
-function normTags(value) {
+function normTags(value: any) {
   if (!value) return [];
   if (Array.isArray(value)) {
     return value.map((t) => String(t).toLowerCase().trim()).filter(Boolean);
@@ -24,24 +26,35 @@ function normTags(value) {
   return [String(value).toLowerCase().trim()].filter(Boolean);
 }
 
+// IMPORTANT: must be a literal for Vite/Cloudflare
+// This is relative to src/components/RelatedPages.astro
+// It matches ALL index.astro pages under src/pages/**/index.astro
+const modules = import.meta.glob("../pages/**/index.astro", { eager: true });
+
+// Convert modules into a list of page-like records
+const pages = Object.values(modules);
+
+// Build a related list; tolerate different export shapes
 const related = pages
-  .map((p) => {
+  .map((p: any) => {
     // Support both patterns:
     // - export const frontmatter = { ... }
     // - export const tags/title/description directly
-    const fm = p.frontmatter ?? p.frontmatter?.frontmatter ?? p.frontmatter; // harmless, defensive
+    const fm = p.frontmatter ?? p?.default?.frontmatter ?? p; // defensive
+
     const pTags = normTags((fm && fm.tags) ?? p.tags);
     const pTitle = (fm && fm.title) ?? p.title ?? "Untitled";
     const pDescription = (fm && fm.description) ?? p.description ?? "";
+    const pUrl = p.url ?? p?.default?.url ?? "";
 
     return {
-      url: p.url,
+      url: pUrl,
       title: pTitle,
       description: pDescription,
       tags: pTags,
     };
   })
-  .filter((x) => x.url !== currentUrl)
+  .filter((x) => x.url && x.url !== currentUrl)
   .filter((x) => currentTags.length > 0 && x.tags.some((t) => currentTags.includes(t)))
   .map((x) => ({
     ...x,
