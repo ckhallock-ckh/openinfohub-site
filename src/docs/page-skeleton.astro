@@ -1,12 +1,12 @@
 ---
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import RelatedPages from "../../../../components/RelatedPages.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import RelatedPages from "../components/RelatedPages.astro";
 
 // ✅ Always export a LITERAL object (prevents "title is not defined" build errors)
 export const frontmatter = {
   title: "PAGE TITLE HERE",
   description: "One-sentence description of what this page answers.",
-  canonical: "https://openinfohub.net/home/pest-control/your-slug/",
+  canonical: "https://openinfohub.net/pest-control/your-slug/",
   updated: "YYYY-MM-DD",
   tags: ["topic", "subcategory", "concept"],
 };
@@ -33,7 +33,7 @@ const faqSchema = {
 
 <BaseLayout title={title} description={description} canonical={canonical}>
   <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
-    <a href="/home/">Home</a> → <a href="/home/pest-control/">Pest Control</a> → <strong>Topic</strong>
+    <a href="/">Home</a> → <a href="/pest-control/">Pest Control</a> → <strong>Topic</strong>
   </nav>
 
   <h1 style="margin:0 0 6px;">{title}</h1>

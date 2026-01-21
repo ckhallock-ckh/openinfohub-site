@@ -11,7 +11,6 @@ const pages = await Astro.glob("./*/index.astro");
 
 const guides = pages
   .map((p) => {
-    // URLs end with a trailing slash, so split and grab the last real segment
     const parts = p.url.split("/").filter(Boolean);
     const slug = parts[parts.length - 1];
 
@@ -28,12 +27,12 @@ const guides = pages
 
 <BaseLayout title={title} description={description} canonical={canonical}>
   <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
-    <a href="/home/">Home</a> †’ <strong>Pest Control</strong>
+    <a href="/">Home</a> â†’ <strong>Pest Control</strong>
   </nav>
 
   <h1 style="margin:0 0 8px;">Pest Control</h1>
   <p style="margin:0 0 18px;">
-    Practical answers for common pest problems€”what€™s normal, what€™s not, and what to do next.
+    Practical answers for common pest problemsâ€”whatâ€™s normal, whatâ€™s not, and what to do next.
   </p>
 
   <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
@@ -60,7 +59,7 @@ const guides = pages
   </section>
 
   <section style="border:1px dashed #d1d5db; border-radius:12px; padding:16px;">
-    <h2 style="margin:0 0 8px; font-size:18px;">Coming next (we€™ll add these)</h2>
+    <h2 style="margin:0 0 8px; font-size:18px;">Coming next (weâ€™ll add these)</h2>
     <ul style="margin:0; padding-left:18px; color:#4b5563;">
       <li>How to find and safely fill groundhog burrows</li>
       <li>Groundhog vs. mole holes: how to tell the difference</li>

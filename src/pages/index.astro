@@ -3,9 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Pull all pages that export `frontmatter`
 // NOTE: This assumes your article pages use: export const frontmatter = { title, description, tags, updated, canonical };
-const modules = import.meta.glob("./home/**/index.astro", { eager: true });
+const modules = import.meta.glob("./pest-control/**/index.astro", { eager: true });
 
-// Build a list of pages (excluding the Home page itself)
+// Build a list of pages (excluding the hub itself)
 const allPages = Object.entries(modules)
   .map(([path, mod]) => {
     const fm = mod.frontmatter;
@@ -17,29 +17,29 @@ const allPages = Object.entries(modules)
       description: fm.description ?? "",
       tags: fm.tags ?? [],
       updated: fm.updated ?? "1970-01-01",
-      canonical: fm.canonical
+      canonical: fm.canonical,
     };
   })
   .filter(Boolean)
-  // exclude /home/ itself
-  .filter((p) => !p.canonical.endsWith("/home/"))
+  // exclude the hub page itself
+  .filter((p) => !p.canonical.endsWith("/pest-control/"))
   // newest first
   .sort((a, b) => String(b.updated).localeCompare(String(a.updated)));
 
 const latest = allPages.slice(0, 8);
 
-// Cluster €œcards€ (manual list, but only a few)
+// Cluster â€œcardsâ€
 const clusters = [
   {
     title: "Pest Control",
-    href: "/home/pest-control/",
-    desc: "Groundhogs, burrows, prevention, and when to call a pro."
-  }
+    href: "/pest-control/",
+    desc: "Groundhogs, burrows, prevention, and when to call a pro.",
+  },
 ];
 
 const title = "Home";
 const description =
-  "OpenInfoHub provides clear, practical answers to common homeowner questions€”organized by topic and easy to skim.";
+  "OpenInfoHub provides clear, practical answers to common homeowner questionsâ€”organized by topic and easy to skim.";
 const canonical = "https://openinfohub.net/";
 const updated = "2026-01-16";
 ---
@@ -47,15 +47,15 @@ const updated = "2026-01-16";
 <BaseLayout title={title} description={description} canonical={canonical}>
   <h1 style="margin:0 0 8px;">OpenInfoHub</h1>
   <p style="margin:0 0 18px; color:#cbd5e1;">
-    Clear, practical answers for homeowner problems€”organized by topic. No fluff, just what to do next.
+    Clear, practical answers for homeowner problemsâ€”organized by topic. No fluff, just what to do next.
   </p>
 
-  {/* What we write / trust (MOVED UP) */}
+  {/* What we write / trust */}
   <section style="margin-bottom:18px;">
     <h2 style="margin:0 0 10px; font-size:18px;">What to expect</h2>
     <ul style="margin:0; padding-left:18px; color:#cbd5e1;">
       <li>Direct answer first, then steps and common mistakes.</li>
-      <li>Safety-first order of operations (don€™t trap animals inside, don€™t create odors, etc.).</li>
+      <li>Safety-first order of operations (donâ€™t trap animals inside, donâ€™t create odors, etc.).</li>
       <li>We keep pages skimmable with tables, checklists, and FAQs.</li>
     </ul>
   </section>
@@ -105,9 +105,9 @@ const updated = "2026-01-16";
   <section style="border:1px dashed rgba(255,255,255,.20); border-radius:12px; padding:14px;">
     <h2 style="margin:0 0 8px; font-size:18px;">Browse topics</h2>
     <p style="margin:0 0 10px; color:#9ca3af;">
-      Start with Pest Control, then we€™ll expand into other homeowner categories as the site grows.
+      Start with Pest Control, then weâ€™ll expand into other homeowner categories as the site grows.
     </p>
-    <a href="/home/pest-control/" style="font-weight:700;">Go to Pest Control †’</a>
+    <a href="/pest-control/" style="font-weight:700;">Go to Pest Control â†’</a>
   </section>
 </BaseLayout>
 
