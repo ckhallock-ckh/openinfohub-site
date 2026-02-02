@@ -1,0 +1,254 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import RelatedPages from "../../../components/RelatedPages.astro";
+
+export const frontmatter = {
+  title: "Groundhog vs. mole holes: how to tell the difference",
+  description:
+    "Use hole size, soil patterns, and surface tunnels to quickly identify whether you’re dealing with a groundhog burrow or mole activity—plus what to do next.",
+  canonical: "https://openinfohub.net/pest-control/groundhog-vs-mole-holes/",
+  updated: "2026-02-02",
+  tags: ["groundhog", "moles", "lawn", "burrows", "identification"],
+};
+
+const { title, description, canonical, updated, tags } = frontmatter;
+
+// Simple FAQ schema (safe, helpful)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What’s the biggest clue: groundhog or mole?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Size and surface damage. Groundhog entrances are large (often around a foot wide) with a noticeable dirt pile near the opening. Moles usually leave raised surface ridges and volcano-like mounds, and you may not see a large open hole at all."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do moles make open holes in the yard?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually, the most obvious sign is raised tunnels (ridges) and mounds rather than a big open entrance. If you see small open holes, double-check for vole activity or other small rodents."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Could small holes be voles instead of moles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Voles often leave small, clean openings and runways in grass, especially near cover. Moles primarily eat insects and create ridges and mounds, while voles chew plants and use surface runways."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "If the hole is near a shed or foundation, does that suggest groundhog?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often yes. Groundhogs frequently burrow along foundations, under sheds, porches, slabs, or at the base of trees. Moles are usually traveling under turf and gardens and don’t create a large den entrance you can step into."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I fill the hole right away?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Don’t fill a large burrow entrance until you’ve confirmed it’s inactive or the animal is out/removed. Sealing too early can trap an animal inside and cause odor problems. For mole ridges/mounds, filling isn’t the solution—control focuses on reducing activity and repairing turf."
+      }
+    }
+  ]
+};
+---
+
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/home/">Home</a> → <a href="/home/pest-control/">Pest Control</a> → <strong>Groundhogs</strong>
+  </nav>
+
+  <h1 style="margin:0 0 6px;">Groundhog vs. mole holes: how to tell the difference</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;">
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      <strong>Groundhog damage usually means a big open entrance (often ~10–12 inches across) with a dirt pile nearby—often close to structures.</strong>
+      <strong>Mole damage usually looks like raised surface ridges and “volcano” mounds</strong> from tunneling, not a large open hole you can see into.
+      If the holes are small and clean with grass runways, also consider <strong>voles</strong>.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick decision table</h2>
+    <div style="overflow:auto;">
+      <table style="border-collapse:collapse; width:100%; min-width:720px;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">What you see</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Most likely</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Do this next</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Large open hole (roughly a foot wide) + excavated dirt pile; often near shed/deck/foundation</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;"><strong>Groundhog</strong></td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Confirm activity, then removal/exclusion; don’t seal while active</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Raised ridges/snaking lines in lawn; soil “pushed up” but no big entrance</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;"><strong>Moles</strong></td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Identify active runs, reduce activity, then repair turf</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Volcano-shaped mounds of soil popping up across yard</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;"><strong>Moles</strong></td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Flatten mounds, locate active paths, focus control there</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Small clean holes + narrow runways in grass; plant chewing/girdling</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;"><strong>Voles</strong> (often, not moles)</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Reduce cover, protect plants, consider trapping strategies for voles</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Spot-the-difference checklist</h2>
+
+    <div style="overflow:auto;">
+      <table style="border-collapse:collapse; width:100%; min-width:820px;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Clue</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Groundhog burrow</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Mole activity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;"><strong>Entrance size</strong></td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Large, obvious opening (often ~10–12 inches wide)</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Usually no big open entrance; tunnels are below surface</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;"><strong>Soil pattern</strong></td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Piled excavated dirt near the opening; can look like a mound beside the hole</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Volcano mounds or fan-shaped mounds; lots of small piles across yard</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;"><strong>Surface signs</strong></td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Paths to garden; chewed plants; multiple entrances possible</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Raised ridges (surface runways) that feel squishy when stepped on</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;"><strong>Location</strong></td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Often near sheds, decks, porches, slabs, tree lines, foundations</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Anywhere in turf/gardens; patterns may crisscross large areas</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;"><strong>Risk level</strong></td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Trip hazard + possible undermining near structures</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Mostly turf damage; plants may loosen from root disturbance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">How to confirm in 10 minutes</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li><strong>Measure the opening:</strong> If it’s “softball-to-basketball” sized (huge), treat it like a groundhog burrow.</li>
+      <li><strong>Look for surface ridges:</strong> Long raised lines in the lawn strongly point to moles.</li>
+      <li><strong>Check the soil “style”:</strong> One big entrance with a dirt pile next to it suggests groundhog; scattered volcano mounds suggest moles.</li>
+      <li><strong>Do a 24-hour activity test (groundhog):</strong> Smooth the dirt at the entrance and see if fresh digging appears the next day.</li>
+      <li><strong>Prioritize safety near structures:</strong> If the suspected burrow is under a deck/shed/steps or right by a foundation, treat it as higher risk and consider a pro sooner.</li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to do next</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        <strong>If it’s a groundhog burrow:</strong> Don’t seal it immediately. Confirm activity → remove/exclude → then backfill and compact.
+        Long-term prevention is <strong>buried mesh and fence “dig-under” protection</strong> (buried edge or outward “L” footer).
+      </li>
+      <li>
+        <strong>If it’s moles:</strong> Think “tunnel system,” not “one hole.” Focus on identifying active runs, reducing activity, and repairing turf.
+        Moles primarily chase insects underground, so you’re usually solving a turf/tunnel problem, not a den under a shed.
+      </li>
+      <li>
+        <strong>If it might be voles:</strong> Reduce cover (tall grass, mulch right up to stems), protect trunks/plants, and use vole-specific control methods.
+      </li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Assuming any hole means moles:</strong> moles often leave ridges/mounds, not a big open entrance.</li>
+      <li><strong>Filling a large burrow right away:</strong> sealing a groundhog inside can create odor and new escape digging.</li>
+      <li><strong>Ignoring location:</strong> a large hole beside a slab, steps, or shed is a higher priority than random turf mounds.</li>
+      <li><strong>Chasing every mole mound:</strong> pick the most active areas instead of fighting the whole yard at once.</li>
+      <li><strong>Missing “vole signs”:</strong> small holes + runways + plant chewing is often voles, not moles.</li>
+    </ul>
+  </section>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">What size is a groundhog hole?</h3>
+    <p style="margin:0 0 12px;">
+      Groundhog (woodchuck) burrow entrances are typically <strong>large and obvious</strong>—often around <strong>10–12 inches</strong> in diameter,
+      with excavated soil nearby. If you can comfortably fit your foot into it, treat it like a groundhog-style burrow.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">Why do I see ridges in my lawn but no big hole?</h3>
+    <p style="margin:0 0 12px;">
+      That pattern is classic for <strong>moles</strong>. Their shallow tunnels can create raised, squishy ridges across turf.
+      You may also see volcano-like mounds where soil was pushed up from deeper runs.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">Could this be voles instead of moles?</h3>
+    <p style="margin:0 0 12px;">
+      Yes. <strong>Voles</strong> often leave small clean openings and visible runways in grass and can chew plants and bark.
+      Moles mostly cause tunneling and mounds while hunting insects underground.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">If the hole is under my shed, is it more likely groundhog?</h3>
+    <p style="margin:0 0 12px;">
+      Often, yes. Groundhogs commonly dig dens under sheds, porches, slabs, and along foundations. Treat these as higher priority
+      because confirming exits and preventing re-entry usually requires exclusion mesh and careful timing.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">Should I fill tunnels and holes the same way for both?</h3>
+    <p style="margin:0;">
+      No. For a <strong>large burrow entrance</strong>, don’t fill until you’re sure it’s inactive or the animal is out/removed—then backfill and compact.
+      For <strong>mole ridges/mounds</strong>, filling is cosmetic and temporary; the goal is reducing activity and then repairing turf.
+    </p>
+  </section>
+
+  <RelatedPages tags={tags} currentUrl={Astro.url.pathname} />
+
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>Groundhog burrow ID: large entrance openings and excavated soil near entrances; commonly near structures/edges.</li>
+      <li>Mole ID: raised surface ridges and volcano-like soil mounds from shallow/deep tunnel systems.</li>
+      <li>Small “clean” holes and runways can indicate voles; confirm before applying the wrong solution.</li>
+      <li>This page is informational and not a substitute for local legal guidance on wildlife handling.</li>
+    </ul>
+  </section>
+
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</BaseLayout>
+
