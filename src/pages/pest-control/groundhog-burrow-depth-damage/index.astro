@@ -1,0 +1,221 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import RelatedPages from "../../../components/RelatedPages.astro";
+
+export const frontmatter = {
+  title: "How deep are groundhog burrows and what damage can they cause?",
+  description:
+    "Learn typical groundhog burrow depth and tunnel layout, the kinds of damage they cause near decks/sheds/foundations, and the safest order to fix the problem.",
+  canonical: "https://openinfohub.net/pest-control/groundhog-burrow-depth-damage/",
+  updated: "2026-02-02",
+  tags: ["groundhog", "burrows", "damage", "prevention", "exclusion"],
+};
+
+const { title, description, canonical, updated, tags } = frontmatter;
+
+// Simple FAQ schema (safe, helpful)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How deep are groundhog burrows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Groundhog burrows are often surprisingly extensive. Depth varies by soil and site, but the main tunnels are commonly several feet below the surface, with chambers and multiple entrances. The more important risk is the size and length of the tunnel system—especially near slabs, decks, and sheds—because it can create voids and settling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a groundhog burrow cause a deck or shed to sink?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Burrows can create underground voids that lead to soil settling, erosion, and loss of support—especially around shed pads, steps, patios, and deck footings. If you see a burrow under a structure, treat it as a higher-risk situation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to fill a groundhog hole right away?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Don’t fill or seal a burrow while it’s active. First confirm the animal is out (or removed), then install exclusion to prevent re-entry, and only then backfill in layers and compact. Sealing too early can trap an animal inside and cause odor problems."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are signs the burrow is active?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Freshly dug soil at the entrance, a clear open hole with smooth edges, worn paths to food sources, and new digging after you smooth the dirt at the entrance (checked within 24–48 hours)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I call a professional wildlife control company?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Call a pro if the burrow is under a deck/shed/steps/patio, near a foundation, if there are multiple entrances you can’t locate, if you suspect young, or if you need certainty before structural repairs. These are the cases where timing and exclusion details matter most."
+      }
+    }
+  ]
+};
+---
+
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/home/">Home</a> → <a href="/home/pest-control/">Pest Control</a> → <strong>Groundhogs</strong>
+  </nav>
+
+  <h1 style="margin:0 0 6px;">How deep are groundhog burrows and what damage can they cause?</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;">
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      <strong>Groundhog burrows can run several feet deep and extend many feet long with chambers and multiple entrances.</strong>
+      The biggest practical problem isn’t the exact depth—it’s the <strong>underground voids and soil movement</strong> they create.
+      If a burrow is near or under a <strong>deck, shed, steps, slab, or foundation</strong>, treat it as higher risk and focus on
+      <strong>safe removal/exclusion first</strong>, then <strong>proper backfill and compaction</strong>.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick decision table</h2>
+    <div style="overflow:auto;">
+      <table style="border-collapse:collapse; width:100%; min-width:720px;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Your situation</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Best next move</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Burrow in open yard, away from structures</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Confirm activity → removal/exclusion → fill & compact</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Lower structural risk; easier to verify inactivity</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Burrow under deck/shed/steps/patio slab</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Pro wildlife control + exclusion mesh, then repairs</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Harder to confirm exits; voids can worsen settlement</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">You see sagging soil, sink spots, or shifting pavers nearby</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Address burrow first, then backfill/compact in lifts</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Filling without exclusion often leads to re-digging</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Multiple entrances / you can’t find the “main” hole</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Track entrances + consider professional help</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Missed openings make DIY sealing fail</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What a groundhog burrow is like</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Multiple openings:</strong> often a main entrance plus one or more escape exits.</li>
+      <li><strong>Long tunnels:</strong> runs can extend well beyond what you can see from the hole.</li>
+      <li><strong>Chambers:</strong> nesting/rest areas and separate “side areas” can exist inside the system.</li>
+      <li><strong>Site choice matters:</strong> edges of lawns, brush lines, and sheltered spaces under structures are common.</li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Damage groundhogs can cause</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Settlement and sink spots:</strong> voids collapse over time, especially after rain.</li>
+      <li><strong>Undermining slabs and steps:</strong> pavers, patios, and walkways can shift as soil moves.</li>
+      <li><strong>Deck and shed issues:</strong> burrows near footings or pads can reduce support and create unevenness.</li>
+      <li><strong>Trip hazards:</strong> sudden soft spots and holes in lawns.</li>
+      <li><strong>Garden damage:</strong> feeding on plants plus soil disturbance around beds.</li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to do (safe order)</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li><strong>Confirm activity:</strong> smooth the dirt at the entrance and check for fresh digging within 24–48 hours.</li>
+      <li><strong>Locate other entrances:</strong> walk the perimeter (fence lines, brush edges, under-deck openings).</li>
+      <li><strong>Don’t seal an active burrow:</strong> avoid trapping an animal inside or creating odor problems.</li>
+      <li><strong>Remove or exclude:</strong> once the animal is out (or removed), block re-entry with heavy-gauge mesh.</li>
+      <li><strong>Backfill in lifts and compact:</strong> add soil in layers, compact each layer to reduce future settling.</li>
+      <li><strong>Prevent the “dig-under” comeback:</strong> bury hardware cloth or use an outward “L” footer at edges.</li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">How to backfill correctly (so it doesn’t sink again)</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Do it after exclusion:</strong> otherwise they often reopen the same spot.</li>
+      <li><strong>Use layers:</strong> backfill in several lifts, not one giant dump of loose soil.</li>
+      <li><strong>Compact each lift:</strong> tamp firmly to reduce voids and settling.</li>
+      <li><strong>Expect some settling:</strong> plan to top off and reseed after the first rain cycle.</li>
+      <li><strong>Watch drainage:</strong> divert downspouts and surface water away from the repaired area.</li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>Sealing or filling a burrow while it’s active.</li>
+      <li>Assuming there’s only one entrance (missed exits = repeat problems).</li>
+      <li>Repairing a patio/steps before the burrow is addressed (damage returns).</li>
+      <li>Backfilling without compaction (creates future sinkholes).</li>
+      <li>Relying on repellents alone after a burrow is established.</li>
+    </ul>
+  </section>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">How deep are groundhog burrows?</h3>
+    <p style="margin:0 0 12px;">
+      Depth varies by soil and site, but groundhog burrows commonly run several feet below the surface with tunnels and chambers.
+      The bigger practical issue is the <strong>extent</strong> of the system and the voids it creates, especially near structures.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">Can a groundhog burrow cause a deck or shed to sink?</h3>
+    <p style="margin:0 0 12px;">
+      Yes. Burrows can create voids that lead to soil settling and loss of support near pads, steps, slabs, and footings.
+      If the burrow is under a structure, prioritize safe removal/exclusion and consider professional help.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">Is it safe to fill a groundhog hole right away?</h3>
+    <p style="margin:0 0 12px;">
+      Don’t fill or seal an active burrow. Confirm the animal is out (or removed), install exclusion to prevent re-entry,
+      then backfill and compact properly. Sealing too early can trap an animal and create odor issues.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">How do I tell if the burrow is active?</h3>
+    <p style="margin:0;">
+      Fresh digging, a clear open entrance, worn paths, and new disturbance after you smooth the dirt at the entrance (checked within 24–48 hours)
+      are common signs of activity.
+    </p>
+  </section>
+
+  <RelatedPages tags={tags} currentUrl={Astro.url.pathname} />
+
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>General wildlife control best practices: confirm activity, remove/exclude first, then seal and compact.</li>
+      <li>Burrow “depth” varies widely; this page focuses on practical risks (voids, settlement) and safe remediation order.</li>
+      <li>This page is informational and not a substitute for local legal guidance on wildlife handling or structural advice.</li>
+    </ul>
+  </section>
+
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</BaseLayout>
+
