@@ -1,0 +1,198 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import RelatedPages from "../../../components/RelatedPages.astro";
+
+export const frontmatter = {
+  title: "Groundhog burrow entrances: how many there are and how to find them",
+  description:
+    "Groundhog burrows often have multiple hidden entrances. Learn how many holes to expect, where escape exits are usually located, and how to find them before sealing.",
+  canonical: "https://openinfohub.net/pest-control/groundhog-burrow-entrances/",
+  updated: "2026-02-02",
+  tags: ["groundhog", "burrows", "entrances", "damage", "exclusion"],
+};
+
+const { title, description, canonical, updated, tags } = frontmatter;
+
+// FAQ schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many entrances does a groundhog burrow usually have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most groundhog burrows have more than one entrance. Many have a main entrance plus one or more hidden escape holes, especially near brush, fence lines, or structures."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do groundhogs have multiple holes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiple entrances allow groundhogs to escape predators, access food from different directions, and avoid being trapped inside their burrow."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are escape entrances usually located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Escape holes are often smaller and harder to spot. Common locations include fence lines, tall grass, brush piles, tree roots, under decks or sheds, and along foundation edges."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find hidden groundhog entrances?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Walk the area in a wide circle, check cover and edges, smooth soil near suspected openings, and look for fresh digging within 24–48 hours. Missed exits are a common reason groundhog problems return."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to seal a burrow if I only see one hole?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not usually. Sealing without finding all entrances can trap an animal inside or force it to dig a new exit, often closer to a structure. Always confirm inactivity or removal first."
+      }
+    }
+  ]
+};
+---
+
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/home/">Home</a> → <a href="/home/pest-control/">Pest Control</a> → <strong>Groundhogs</strong>
+  </nav>
+
+  <h1 style="margin:0 0 6px;">Groundhog burrow entrances: how many there are and how to find them</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;">
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      <strong>Groundhog burrows almost always have more than one entrance.</strong>
+      Many homeowners only notice the main hole, but there is often at least one
+      <strong>hidden escape exit</strong>. Missing these entrances is one of the
+      most common reasons groundhog problems come back after DIY fixes.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick decision table</h2>
+    <div style="overflow:auto;">
+      <table style="border-collapse:collapse; width:100%; min-width:720px;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">What you see</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">What it likely means</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Best next move</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">One large open hole in the yard</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">There may be hidden exits</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Search perimeter before sealing</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Fresh digging appears after filling</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Missed escape entrance</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Locate all openings first</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Burrow near deck, shed, or fence</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Likely multiple exits under cover</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Consider professional exclusion</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Why groundhogs use multiple entrances</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Predator escape:</strong> a second exit provides a fast way out.</li>
+      <li><strong>Food access:</strong> different entrances lead to different feeding areas.</li>
+      <li><strong>Safety:</strong> avoids being trapped if one entrance collapses.</li>
+      <li><strong>Low visibility:</strong> escape holes are often hidden on purpose.</li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common places to find hidden entrances</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>Fence lines and corners</li>
+      <li>Tall grass or brush piles</li>
+      <li>Tree roots and hedge bases</li>
+      <li>Under decks, sheds, or porches</li>
+      <li>Along foundations or slab edges</li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">How to find all entrances (simple method)</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li>Walk the area in a wide circle around the main hole.</li>
+      <li>Check edges, cover, and shaded areas first.</li>
+      <li>Smooth loose soil at suspected openings.</li>
+      <li>Recheck in 24–48 hours for fresh digging.</li>
+      <li>Repeat until no new disturbance appears.</li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>Assuming there is only one hole.</li>
+      <li>Sealing entrances without confirming inactivity.</li>
+      <li>Ignoring fence lines and dense cover.</li>
+      <li>Filling holes before exclusion is in place.</li>
+      <li>Repairing soil or slabs before the burrow is fully addressed.</li>
+    </ul>
+  </section>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">How many entrances does a groundhog burrow have?</h3>
+    <p style="margin:0 0 12px;">
+      Many groundhog burrows have at least two entrances, and some have several.
+      The extra holes are often smaller and intentionally hidden.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">Why does my groundhog keep coming back?</h3>
+    <p style="margin:0 0 12px;">
+      The most common reason is a missed escape entrance. When one hole is sealed,
+      the groundhog simply uses another exit or digs a new one.
+    </p>
+
+    <h3 style="margin:0 0 6px; font-size:16px;">When should I call a professional?</h3>
+    <p style="margin:0;">
+      If the burrow is under a structure, near a foundation, or you can’t locate
+      all entrances, professional wildlife control can prevent repeat damage.
+    </p>
+  </section>
+
+  <RelatedPages tags={tags} currentUrl={Astro.url.pathname} />
+
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>General wildlife control best practices for burrow identification and exclusion.</li>
+      <li>Groundhog behavior patterns involving escape routes and den safety.</li>
+      <li>This page is informational and not a substitute for local wildlife regulations.</li>
+    </ul>
+  </section>
+
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</BaseLayout>
+
