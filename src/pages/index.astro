@@ -1,28 +1,37 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// Pull all pages that export `frontmatter`
-// NOTE: This assumes your article pages use: export const frontmatter = { title, description, tags, updated, canonical };
+// Pull all pest-control pages
 const modules = import.meta.glob("./pest-control/**/index.astro", { eager: true });
 
 // Build a list of pages (excluding the hub itself)
 const allPages = Object.entries(modules)
   .map(([path, mod]) => {
-    const fm = mod.frontmatter;
-    if (!fm?.title || !fm?.canonical) return null;
+    // Prefer your standardized frontmatter object…
+    const fm = mod.frontmatter ?? {};
+
+    // …but fall back to exported fields if a page doesn’t surface frontmatter for any reason.
+    const title = fm.title ?? mod.title ?? null;
+    const canonical = fm.canonical ?? mod.canonical ?? null;
+
+    if (!title || !canonical) return null;
+
+    const description = fm.description ?? mod.description ?? "";
+    const tags = fm.tags ?? mod.tags ?? [];
+    const updated = fm.updated ?? mod.updated ?? "1970-01-01";
 
     return {
       path,
-      title: fm.title,
-      description: fm.description ?? "",
-      tags: fm.tags ?? [],
-      updated: fm.updated ?? "1970-01-01",
-      canonical: fm.canonical,
+      title,
+      description,
+      tags,
+      updated,
+      canonical,
     };
   })
   .filter(Boolean)
   // exclude the hub page itself
-  .filter((p) => !p.canonical.endsWith("/pest-control/"))
+  .filter((p) => !String(p.canonical).endsWith("/pest-control/"))
   // newest first
   .sort((a, b) => String(b.updated).localeCompare(String(a.updated)));
 
@@ -91,9 +100,11 @@ const updated = "2026-01-16";
               <a href={new URL(p.canonical).pathname} style="font-weight:600;">
                 {p.title}
               </a>
-              <div style="font-size:13px; color:#9ca3af; margin-top:3px;">
-                {p.description}
-              </div>
+              {p.description ? (
+                <div style="font-size:13px; color:#9ca3af; margin-top:3px;">
+                  {p.description}
+                </div>
+              ) : null}
             </li>
           ))}
         </ul>
