@@ -2,15 +2,14 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import RelatedPages from "../../../components/RelatedPages.astro";
 
-// These frontmatter keys are what your /pest-control/ hub reads via Astro.glob()
-export const title =
+const pageTitle =
   "Do mothballs, ammonia, or ultrasonic repellents work for groundhogs?";
-export const description =
+const pageDescription =
   "Do mothballs, ammonia, or ultrasonic devices actually work for groundhogs? Learn why these repellents usually fail, what can be risky, and what works instead (exclusion + proper backfill).";
-export const canonical =
+const canonical =
   "https://openinfohub.net/pest-control/do-mothballs-ammonia-ultrasonic-work-for-groundhogs/";
-export const updated = "2026-02-05";
-export const tags = [
+const updated = "2026-02-05";
+const tags = [
   "pest-control",
   "groundhog",
   "repellents",
@@ -20,8 +19,16 @@ export const tags = [
   "wildlife-control",
 ];
 
-// BaseLayout expects the same values you’ve been using
-const fullTitle = `${title} | OpenInfoHub`;
+// ✅ This is what your HOME page is expecting
+export const frontmatter = {
+  title: pageTitle,
+  description: pageDescription,
+  canonical,
+  updated,
+  tags,
+};
+
+const fullTitle = `${pageTitle} | OpenInfoHub`;
 
 const faqs = [
   {
@@ -48,17 +55,14 @@ const faqSchema = {
   mainEntity: faqs.map((f) => ({
     "@type": "Question",
     name: f.q,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: f.a,
-    },
+    acceptedAnswer: { "@type": "Answer", text: f.a },
   })),
 };
 ---
 
 <BaseLayout
   title={fullTitle}
-  description={description}
+  description={pageDescription}
   canonical={canonical}
   updated={updated}
 >
@@ -67,7 +71,7 @@ const faqSchema = {
     <strong>Groundhogs</strong>
   </nav>
 
-  <h1 style="margin:0 0 6px;">{title}</h1>
+  <h1 style="margin:0 0 6px;">{pageTitle}</h1>
 
   <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
     Updated <time datetime={updated}>{updated}</time>
@@ -154,9 +158,6 @@ const faqSchema = {
       <li><strong>Burrow complexity:</strong> groundhogs can use alternate exits or deeper chambers.</li>
       <li><strong>Safety concerns:</strong> mothballs can be hazardous around pets/kids.</li>
     </ul>
-    <p style="margin:12px 0 0;">
-      <strong>Bottom line:</strong> mothballs are unreliable and can create unnecessary risk.
-    </p>
   </section>
 
   <section style="margin-bottom:18px;">
@@ -171,9 +172,6 @@ const faqSchema = {
       <li><strong>Soil neutralizes:</strong> moisture and soil contact reduce odor strength.</li>
       <li><strong>Groundhogs adapt:</strong> they may wait it out or dig around treated sections.</li>
     </ul>
-    <p style="margin:12px 0 0;">
-      <strong>Bottom line:</strong> ammonia often delays proper exclusion and repair.
-    </p>
   </section>
 
   <section style="margin-bottom:18px;">
@@ -190,19 +188,6 @@ const faqSchema = {
       <li><strong>Limited coverage:</strong> tunnels may run outside the “affected” zone.</li>
       <li><strong>Workarounds:</strong> animals can move deeper or reroute tunnels.</li>
     </ul>
-    <p style="margin:12px 0 0;">
-      <strong>Bottom line:</strong> ultrasonic repellents aren’t reliable for established burrows.
-    </p>
-  </section>
-
-  <section style="margin-bottom:18px;">
-    <h2 style="margin:0 0 10px; font-size:18px;">Why repellents fail in general</h2>
-    <p style="margin:0;">
-      Groundhogs are motivated by <strong>shelter</strong>, <strong>safety</strong>, and{" "}
-      <strong>food access</strong>. If a spot provides those benefits, mild discomfort is often
-      tolerated. Repellents also don’t remove entrances, tunnels, or the site conditions
-      that made the location attractive.
-    </p>
   </section>
 
   <section style="margin-bottom:18px;">
@@ -228,9 +213,7 @@ const faqSchema = {
     </ul>
   </section>
 
-  <section
-    style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;"
-  >
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
     <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
     {faqs.map((f) => (
       <div style="margin-bottom:12px;">
@@ -238,15 +221,6 @@ const faqSchema = {
         <p style="margin:0;">{f.a}</p>
       </div>
     ))}
-  </section>
-
-  <section style="font-size:13px; color:#6b7280;">
-    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
-    <ul style="margin:0; padding-left:18px;">
-      <li>General wildlife control best practices: confirm activity, remove/exclude first, then seal and compact.</li>
-      <li>Repellents are treated as unreliable for established burrows; this page focuses on practical, repeatable fixes.</li>
-      <li>This page is informational and not a substitute for local legal guidance on wildlife handling or structural advice.</li>
-    </ul>
   </section>
 
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
