@@ -9,7 +9,7 @@ const canonical = "https://openinfohub.net/pest-control/";
 // Get all child guide pages (folders directly under this hub)
 const pages = await Astro.glob("./*/index.astro");
 
-function titleFromSlug(slug) {
+function titleFromSlug(slug: string) {
   return slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
@@ -18,17 +18,15 @@ const guides = pages
     const parts = p.url.split("/").filter(Boolean);
     const slug = parts[parts.length - 1];
 
-    // IMPORTANT:
-    // Some pages expose metadata via module exports (p.title/p.description),
-    // not via p.frontmatter.
+    // Prefer standardized frontmatter, but fall back to module exports (older pages)
     const pageTitle =
-      p.frontmatter?.title ?? p.title ?? titleFromSlug(slug);
+      p.frontmatter?.title ?? (p as any).title ?? titleFromSlug(slug);
 
     const pageDescription =
-      p.frontmatter?.description ?? p.description ?? "";
+      p.frontmatter?.description ?? (p as any).description ?? "";
 
     const pageUpdated =
-      p.frontmatter?.updated ?? p.updated ?? "";
+      p.frontmatter?.updated ?? (p as any).updated ?? "";
 
     return {
       url: p.url,
@@ -81,5 +79,4 @@ const guides = pages
     </ul>
   </section>
 </BaseLayout>
-
 
