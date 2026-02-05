@@ -1,0 +1,199 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedPages from "../../components/RelatedPages.astro";
+
+const title = "Do mothballs, ammonia, or ultrasonic repellents work for groundhogs? | OpenInfoHub";
+const description =
+  "Learn whether mothballs, ammonia, and ultrasonic devices actually work for groundhogs, why these repellents usually fail, and what to do instead (safe order, exclusion, and backfilling).";
+const canonical = "https://openinfohub.net/pest-control/do-mothballs-ammonia-ultrasonic-work-for-groundhogs/";
+const updated = "2026-02-05";
+const tags = ["pest-control", "groundhog", "repellents", "burrows", "exclusion", "deterrence", "wildlife-control"];
+
+const faqs = [
+  {
+    q: "Do mothballs work to get rid of groundhogs?",
+    a: "Usually no. Outdoors, the odor dissipates quickly and burrows have airflow and multiple entrances. Mothballs can also be hazardous to pets, children, and wildlife, making them a poor choice.",
+  },
+  {
+    q: "Does ammonia drive groundhogs out of a burrow?",
+    a: "Rarely. Ammonia fumes don’t stay concentrated in outdoor burrows for long, and groundhogs may wait it out or reroute tunnels. It often delays the real fix: removal/exclusion and sealing.",
+  },
+  {
+    q: "Do ultrasonic repellent stakes work for groundhogs?",
+    a: "Typically no. Ultrasonic sound and vibration don’t transmit effectively through soil or throughout a burrow system. Groundhogs can move deeper or dig around the affected area.",
+  },
+  {
+    q: "What actually works to stop groundhogs from burrowing?",
+    a: "The most reliable approach is removal or confirmed exit, followed by physical exclusion (hardware cloth or buried fencing) and then proper backfill and compaction to prevent collapse and re-digging.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
+};
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} updated={updated}>
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/">Home</a> → <a href="/pest-control/">Pest Control</a> → <strong>Groundhogs</strong>
+  </nav>
+
+  <h1 style="margin:0 0 6px;">Do mothballs, ammonia, or ultrasonic repellents work for groundhogs?</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;">
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      <strong>Mothballs, ammonia, and ultrasonic repellents are unreliable and usually ineffective for groundhogs.</strong>
+      At best, they may cause brief avoidance; at worst, they fail while the burrow continues to expand.
+      If you want a lasting result, focus on <strong>removal/exclusion first</strong>, then <strong>blocking re-entry</strong>,
+      followed by <strong>proper backfill and compaction</strong>.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick decision table</h2>
+    <div style="overflow:auto;">
+      <table style="border-collapse:collapse; width:100%; min-width:720px;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Method</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Does it work?</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:10px;">Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Mothballs</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">❌ No</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Odor fades quickly outdoors; burrows vent; also safety risks</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Ammonia</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">❌ Rarely</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Fumes dissipate and animals often wait it out or reroute tunnels</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Ultrasonic repellents</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">❌ No</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Sound/vibration don’t travel well through soil or across burrow systems</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Physical exclusion</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">✅ Yes</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Blocks access permanently when installed correctly</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Removal + exclusion</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">✅ Best option</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Solves the root cause and prevents re-entry</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Mothballs: why they don’t work</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Outdoor airflow:</strong> burrows vent through multiple entrances, so odor doesn’t stay concentrated.</li>
+      <li><strong>Odor fades fast:</strong> wind and moisture reduce effectiveness quickly.</li>
+      <li><strong>Burrow complexity:</strong> groundhogs can seal off sections or use alternate exits.</li>
+      <li><strong>Safety concerns:</strong> mothballs are not a safe “repellent” around pets/children and can create contamination risks.</li>
+    </ul>
+    <p style="margin:12px 0 0;">
+      <strong>Bottom line:</strong> mothballs are an unreliable DIY tactic and often create more risk than benefit.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Ammonia: temporary irritation, not a solution</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Fumes escape:</strong> burrow openings vent ammonia quickly.</li>
+      <li><strong>Soil neutralizes:</strong> moisture and soil absorb odors and reduce potency.</li>
+      <li><strong>Groundhogs adapt:</strong> they may wait it out or dig around treated sections.</li>
+    </ul>
+    <p style="margin:12px 0 0;">
+      <strong>Bottom line:</strong> ammonia seldom eliminates an established burrow and can delay the real fix.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Ultrasonic repellents: why sound doesn’t stop groundhogs</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li><strong>Poor underground transmission:</strong> high-frequency sound doesn’t travel far through soil.</li>
+      <li><strong>Limited coverage:</strong> burrow networks extend beyond where the device has any effect.</li>
+      <li><strong>Behavioral workaround:</strong> animals can shift deeper or reroute tunnels.</li>
+    </ul>
+    <p style="margin:12px 0 0;">
+      <strong>Bottom line:</strong> ultrasonic stakes are not a reliable way to solve a groundhog burrow problem.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Why repellents fail in general</h2>
+    <p style="margin:0;">
+      Groundhogs are strongly motivated by <strong>shelter</strong>, <strong>safety</strong>, and <strong>food access</strong>.
+      If a burrow location provides those benefits, mild discomfort from smell or sound is often tolerated.
+      Repellents also don’t remove entrances, tunnels, or the site conditions that made the area attractive in the first place.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to do instead (safe order)</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li><strong>Confirm activity:</strong> smooth dirt at entrances and check for fresh digging within 24–48 hours.</li>
+      <li><strong>Find all entrances:</strong> walk fence lines, brush edges, and under-deck openings.</li>
+      <li><strong>Don’t seal an active burrow:</strong> avoid trapping an animal inside and creating odor issues.</li>
+      <li><strong>Remove or exclude:</strong> once the animal is out (or removed), prevent re-entry.</li>
+      <li><strong>Install physical barriers:</strong> use heavy-gauge hardware cloth; bury it and consider an outward “L” footer where digging is likely.</li>
+      <li><strong>Backfill and compact:</strong> fill in lifts and compact to reduce future settling and collapse.</li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>Relying on repellents alone after a burrow is established.</li>
+      <li>Sealing or filling while the burrow is active.</li>
+      <li>Treating only one entrance and missing escape exits.</li>
+      <li>Backfilling without compaction (future sinkholes).</li>
+      <li>Repairing patios/steps/decks before stopping the burrowing (damage returns).</li>
+    </ul>
+  </section>
+
+  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+    {faqs.map((f) => (
+      <>
+        <h3 style="margin:0 0 6px; font-size:16px;">{f.q}</h3>
+        <p style="margin:0 0 12px;">{f.a}</p>
+      </>
+    ))}
+  </section>
+
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>General wildlife control best practices: confirm activity, remove/exclude first, then seal and compact.</li>
+      <li>Repellents are treated as unreliable for established burrows; this page focuses on practical, repeatable fixes.</li>
+      <li>This page is informational and not a substitute for local legal guidance on wildlife handling or structural advice.</li>
+    </ul>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <RelatedPages tags={tags} />
+</BaseLayout>
+
