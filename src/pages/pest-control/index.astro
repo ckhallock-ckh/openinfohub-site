@@ -6,10 +6,10 @@ const description =
   "Straightforward pest control answers: prevention, identification, and when to call a pro.";
 const canonical = "https://openinfohub.net/pest-control/";
 
-// Get all child guide pages (folders directly under this hub)
+// Get all child guide pages
 const pages = await Astro.glob("./*/index.astro");
 
-function titleFromSlug(slug: string) {
+function titleFromSlug(slug) {
   return slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
@@ -18,21 +18,16 @@ const guides = pages
     const parts = p.url.split("/").filter(Boolean);
     const slug = parts[parts.length - 1];
 
-    // Prefer standardized frontmatter, but fall back to module exports (older pages)
-    const pageTitle =
-      p.frontmatter?.title ?? (p as any).title ?? titleFromSlug(slug);
-
-    const pageDescription =
-      p.frontmatter?.description ?? (p as any).description ?? "";
-
-    const pageUpdated =
-      p.frontmatter?.updated ?? (p as any).updated ?? "";
-
     return {
       url: p.url,
-      title: pageTitle,
-      description: pageDescription,
-      updated: pageUpdated,
+      title:
+        p.frontmatter?.title ??
+        p.title ??
+        titleFromSlug(slug),
+      description:
+        p.frontmatter?.description ??
+        p.description ??
+        "",
     };
   })
   .sort((a, b) => a.title.localeCompare(b.title));
