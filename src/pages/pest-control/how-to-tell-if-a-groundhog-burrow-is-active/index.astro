@@ -1,0 +1,279 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import RelatedPages from "../../../components/RelatedPages.astro";
+
+// ✅ Always export a LITERAL object
+export const frontmatter = {
+  title: "How to tell if a groundhog burrow is active",
+  description:
+    "Learn the simplest signs a groundhog burrow is currently in use, how to check safely, and when it’s safe to fill and exclude the hole.",
+  canonical:
+    "https://openinfohub.net/pest-control/how-to-tell-if-a-groundhog-burrow-is-active/",
+  updated: "2026-02-10",
+  tags: [
+    "pest-control",
+    "groundhog",
+    "burrows",
+    "identification",
+    "deterrence",
+    "exclusion",
+  ],
+};
+
+const { title, description, canonical, updated, tags } = frontmatter;
+
+// ✅ Only include FAQ schema if you have real FAQs
+const faqs = [
+  {
+    q: "What’s the fastest way to tell if a groundhog burrow is active?",
+    a: "Look for fresh soil, a clear/open entrance, well-worn paths, and droppings nearby. A simple test is to loosely “plug” the entrance with leaves or paper and check within 12–24 hours—active burrows are often reopened quickly.",
+  },
+  {
+    q: "How long does it take for a groundhog to reopen a plugged hole?",
+    a: "Often within 12–24 hours if the burrow is actively used. Check at the same time the next day for the clearest signal.",
+  },
+  {
+    q: "Can a groundhog burrow look inactive but still be used?",
+    a: "Yes. Some entrances are secondary and may be quiet while another entrance is used. That’s why it helps to locate multiple entrances and check activity across the area, not just one hole.",
+  },
+  {
+    q: "Is it safe to fill a burrow if I’m not sure it’s inactive?",
+    a: "No. Don’t fill a burrow you suspect is active. If it’s active, resolve the animal issue first (legal humane removal or a wildlife pro), then repair and exclude.",
+  },
+  {
+    q: "Do groundhogs have more than one entrance?",
+    a: "Very often, yes. Burrow systems commonly have multiple entrances, including hidden “escape” openings near brush, decks, sheds, or slopes.",
+  },
+];
+
+const faqJsonLd =
+  faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/">Home</a> → <a href="/pest-control/">Pest Control</a> →{" "}
+    <strong>Groundhogs</strong>
+  </nav>
+
+  <h1 style="margin:0 0 6px;">{title}</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  <section
+    style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;"
+  >
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      A groundhog burrow is likely <strong>active</strong> if you see{" "}
+      <strong>fresh digging</strong> (loose soil), a <strong>clear/open</strong>{" "}
+      entrance (not collapsed or overgrown), <strong>worn paths</strong> leading
+      to the hole, and <strong>droppings</strong> nearby. The simplest test is to{" "}
+      <strong>loosely plug the entrance</strong> with leaves or paper and check
+      within <strong>12–24 hours</strong>: active burrows are usually reopened.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick reference</h2>
+
+    <div style="overflow:auto; border:1px solid #e5e7eb; border-radius:12px;">
+      <table style="width:100%; border-collapse:collapse; font-size:14px;">
+        <thead>
+          <tr style="background:#f3f4f6;">
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              Sign
+            </th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              What it suggests
+            </th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              How confident?
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Fresh loose soil / new mound
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Recent digging or maintenance
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              High
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Entrance stays open/clear
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Regular traffic
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Medium–High
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Worn paths to garden/cover
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Repeated travel route
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Medium
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Droppings nearby
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Recent presence
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Medium
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px;">
+              Plug test reopened in 12–24h
+            </td>
+            <td style="padding:10px;">
+              Active use very likely
+            </td>
+            <td style="padding:10px;">
+              Very high
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What’s going on</h2>
+    <p style="margin:0 0 10px;">
+      Groundhogs maintain burrows because they’re shelter and a safe escape route.
+      Active systems often have multiple entrances, including less obvious “escape”
+      holes near brush, foundations, decks, sheds, or slopes. That’s why a single
+      quiet entrance doesn’t always mean the burrow is abandoned.
+    </p>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Active burrows</strong> usually look “maintained”: clear opening,
+        fresh soil, and footpaths.
+      </li>
+      <li>
+        <strong>Inactive burrows</strong> tend to look “neglected”: cobwebs,
+        collapsed edges, leaves/grass collecting, and no fresh digging.
+      </li>
+      <li>
+        <strong>Seasonality matters:</strong> activity may slow during cold spells
+        and surge during warmer days.
+      </li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to do (safe order)</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Locate more than one entrance.</strong> Walk the perimeter and
+        look for additional holes near cover, structures, or slopes.
+      </li>
+      <li>
+        <strong>Look for fresh signs.</strong> Check for loose soil, a clean/open
+        entrance, worn paths, and droppings.
+      </li>
+      <li>
+        <strong>Do the “plug test” (12–24 hours).</strong> Loosely pack the
+        entrance with leaves, grass, or paper (not dirt or rocks). Mark it
+        visually and re-check at the same time the next day.
+      </li>
+      <li>
+        <strong>If reopened, treat as active.</strong> Don’t fill it yet—resolve
+        the animal issue first (legal humane removal or a pro).
+      </li>
+      <li>
+        <strong>If not reopened, confirm again.</strong> Repeat the test once or
+        check other entrances; a second “no activity” check reduces mistakes.
+      </li>
+      <li>
+        <strong>Only then repair and exclude.</strong> Collapse and compact the
+        tunnel system and install a buried barrier to prevent re-digging.
+      </li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Filling an active burrow:</strong> can trap an animal or force a
+        new exit elsewhere (often worse).
+      </li>
+      <li>
+        <strong>Only checking one entrance:</strong> groundhogs often have
+        secondary openings you didn’t notice.
+      </li>
+      <li>
+        <strong>Packing the hole with dirt as a “test”:</strong> compaction makes
+        it harder to interpret results and can create hazards.
+      </li>
+      <li>
+        <strong>Assuming “no fresh dirt” means inactive:</strong> weather can wash
+        signs away; use the plug test for confirmation.
+      </li>
+    </ul>
+  </section>
+
+  {faqs.length ? (
+    <section
+      style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;"
+    >
+      <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+      {faqs.map((f) => (
+        <div style="margin-bottom:14px;">
+          <div style="font-weight:700; margin-bottom:4px;">{f.q}</div>
+          <div style="color:#374151;">{f.a}</div>
+        </div>
+      ))}
+    </section>
+  ) : null}
+
+  <RelatedPages tags={tags} />
+
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        General wildlife-control best practices: confirm activity, resolve the
+        animal issue first, then repair and exclude to prevent re-entry.
+      </li>
+      <li>
+        Informational only; follow local rules and use humane/legal methods.
+      </li>
+    </ul>
+  </section>
+
+  {faqJsonLd ? (
+    <script type="application/ld+json">
+      {JSON.stringify(faqJsonLd)}
+    </script>
+  ) : null}
+</BaseLayout>
+
