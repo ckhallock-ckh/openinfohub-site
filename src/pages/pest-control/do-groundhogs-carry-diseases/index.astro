@@ -1,0 +1,268 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import RelatedPages from "../../../components/RelatedPages.astro";
+
+// ✅ Always export a LITERAL object
+export const frontmatter = {
+  title: "Do groundhogs carry diseases?",
+  description:
+    "Learn what diseases groundhogs can carry, how transmission happens, the real risks to people and pets, and what to do if there’s contact or a bite.",
+  canonical:
+    "https://openinfohub.net/pest-control/do-groundhogs-carry-diseases/",
+  updated: "2026-02-10",
+  tags: [
+    "pest-control",
+    "groundhog",
+    "diseases",
+    "health",
+    "pets",
+    "wildlife",
+    "safety",
+  ],
+};
+
+const { title, description, canonical, updated, tags } = frontmatter;
+
+// ✅ Only include FAQ schema if you have real FAQs
+const faqs = [
+  {
+    q: "Do groundhogs carry rabies?",
+    a: "Rabies in groundhogs is rare, but it is possible. Any bite or scratch from a wild mammal should be treated seriously and evaluated by a medical or veterinary professional.",
+  },
+  {
+    q: "Can groundhogs spread diseases to dogs or cats?",
+    a: "Yes. Pets can be exposed through bites, scratches, contact with saliva, or parasites like ticks and fleas that groundhogs may carry.",
+  },
+  {
+    q: "Is it dangerous to clean up after a groundhog?",
+    a: "Direct contact with droppings, urine, or contaminated soil can pose some risk. Wear gloves, avoid stirring dust, and wash hands thoroughly after cleanup.",
+  },
+  {
+    q: "What should I do if my pet was bitten by a groundhog?",
+    a: "Contact a veterinarian immediately. Even if injuries seem minor, puncture wounds and disease exposure need professional evaluation.",
+  },
+  {
+    q: "Should I call a professional if a groundhog looks sick or aggressive?",
+    a: "Yes. Abnormal behavior can indicate illness. Avoid contact and contact a wildlife professional or local animal control.",
+  },
+];
+
+const faqJsonLd =
+  faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/">Home</a> → <a href="/pest-control/">Pest Control</a> →{" "}
+    <strong>Health & Safety</strong>
+  </nav>
+
+  <h1 style="margin:0 0 6px;">{title}</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  <section
+    style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;"
+  >
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      <strong>Groundhogs can carry diseases</strong>, but the overall risk to people
+      and pets is generally <strong>low with casual exposure</strong>. Most health
+      concerns arise from <strong>bites, scratches, close contact</strong>, or
+      exposure to <strong>parasites</strong> like ticks. Problems are uncommon, but
+      any direct contact should be taken seriously.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick reference</h2>
+
+    <div style="overflow:auto; border:1px solid #e5e7eb; border-radius:12px;">
+      <table style="width:100%; border-collapse:collapse; font-size:14px;">
+        <thead>
+          <tr style="background:#f3f4f6;">
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              Disease / risk
+            </th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              How exposure happens
+            </th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              Risk level
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Rabies
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Bites or saliva entering wounds
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Rare but serious
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Tularemia
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Handling animals, ticks, contaminated soil
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Uncommon
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Parasites (ticks, fleas)
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Pets contacting burrows or animals
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Low–medium
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px;">
+              Bacterial infections
+            </td>
+            <td style="padding:10px;">
+              Bites, scratches, contaminated wounds
+            </td>
+            <td style="padding:10px;">
+              Low
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What’s going on</h2>
+    <p style="margin:0 0 10px;">
+      Groundhogs are wild mammals, and like most wildlife, they can carry bacteria,
+      viruses, and parasites without appearing sick. Disease transmission usually
+      requires <strong>direct contact</strong>—not simply seeing a groundhog in your
+      yard.
+    </p>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Rabies:</strong> Rare in groundhogs, but any bite should be treated
+        as a medical concern.
+      </li>
+      <li>
+        <strong>Tularemia:</strong> A bacterial illness sometimes associated with
+        wild rodents and ticks.
+      </li>
+      <li>
+        <strong>Parasites:</strong> Groundhog burrows can harbor ticks or fleas
+        that may transfer to pets.
+      </li>
+      <li>
+        <strong>Indirect exposure:</strong> Soil, burrow entrances, and nesting
+        areas can contain bacteria, especially if disturbed.
+      </li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to do (safe order)</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Avoid direct contact.</strong> Do not handle groundhogs, alive or
+        dead.
+      </li>
+      <li>
+        <strong>Protect pets.</strong> Keep dogs from chasing or cornering
+        groundhogs; supervise outdoor time.
+      </li>
+      <li>
+        <strong>Use gloves for cleanup.</strong> When filling burrows or working
+        near entrances, wear gloves and wash hands afterward.
+      </li>
+      <li>
+        <strong>Respond to bites immediately.</strong> Clean wounds and contact a
+        medical or veterinary professional right away.
+      </li>
+      <li>
+        <strong>Use exclusion and prevention.</strong> Physical barriers and
+        habitat modification reduce repeat exposure.
+      </li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Assuming wildlife is disease-free:</strong> Even healthy-looking
+        animals can carry pathogens.
+      </li>
+      <li>
+        <strong>Letting pets “deal with it”:</strong> This increases bite and
+        parasite risk.
+      </li>
+      <li>
+        <strong>Handling sick or injured animals:</strong> Increases exposure
+        risk significantly.
+      </li>
+      <li>
+        <strong>Ignoring minor bites or scratches:</strong> Small wounds can still
+        become infected.
+      </li>
+    </ul>
+  </section>
+
+  {faqs.length ? (
+    <section
+      style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;"
+    >
+      <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+      {faqs.map((f) => (
+        <div style="margin-bottom:14px;">
+          <div style="font-weight:700; margin-bottom:4px;">{f.q}</div>
+          <div style="color:#374151;">{f.a}</div>
+        </div>
+      ))}
+    </section>
+  ) : null}
+
+  <RelatedPages tags={tags} />
+
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        General public-health and wildlife guidance on zoonotic diseases and
+        burrowing mammals.
+      </li>
+      <li>
+        Informational only; consult medical or veterinary professionals for
+        diagnosis or treatment.
+      </li>
+    </ul>
+  </section>
+
+  {faqJsonLd ? (
+    <script type="application/ld+json">
+      {JSON.stringify(faqJsonLd)}
+    </script>
+  ) : null}
+</BaseLayout>
+

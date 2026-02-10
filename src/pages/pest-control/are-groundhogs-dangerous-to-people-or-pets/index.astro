@@ -1,0 +1,261 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import RelatedPages from "../../../components/RelatedPages.astro";
+
+// ✅ Always export a LITERAL object
+export const frontmatter = {
+  title: "Are groundhogs dangerous to people or pets?",
+  description:
+    "Learn whether groundhogs pose a risk to people, dogs, or cats, when they can become dangerous, and how to reduce risk around your home.",
+  canonical:
+    "https://openinfohub.net/pest-control/are-groundhogs-dangerous-to-people-or-pets/",
+  updated: "2026-02-10",
+  tags: [
+    "pest-control",
+    "groundhog",
+    "safety",
+    "pets",
+    "wildlife",
+    "deterrence",
+  ],
+};
+
+const { title, description, canonical, updated, tags } = frontmatter;
+
+// ✅ Only include FAQ schema if you have real FAQs
+const faqs = [
+  {
+    q: "Do groundhogs attack people?",
+    a: "Groundhogs are not aggressive toward people and almost always avoid contact. Bites or attacks are rare and typically only occur if a groundhog feels trapped, cornered, or is handled.",
+  },
+  {
+    q: "Can groundhogs hurt dogs or cats?",
+    a: "Yes, a groundhog can injure a pet if it feels threatened. Their sharp teeth and claws can cause puncture wounds, especially if a dog corners or tries to grab one.",
+  },
+  {
+    q: "Do groundhogs carry rabies?",
+    a: "Rabies in groundhogs is rare but possible. Any bite or scratch from a wild animal should be evaluated by a medical or veterinary professional.",
+  },
+  {
+    q: "Is it safe to let my dog chase a groundhog?",
+    a: "No. Chasing increases the risk of bites, scratches, and disease exposure. It can also drive the animal to dig new escape tunnels closer to structures.",
+  },
+  {
+    q: "When should I call a professional?",
+    a: "Call a wildlife professional if a groundhog is acting aggressively, appears injured or sick, or is living under a structure where pets or children are present.",
+  },
+];
+
+const faqJsonLd =
+  faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/">Home</a> → <a href="/pest-control/">Pest Control</a> →{" "}
+    <strong>Safety</strong>
+  </nav>
+
+  <h1 style="margin:0 0 6px;">{title}</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  <section
+    style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;"
+  >
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      <strong>Groundhogs are generally not dangerous</strong> to people or pets
+      and prefer to avoid contact. However, they <strong>can bite or scratch</strong>
+      if cornered, handled, or threatened—especially by dogs. The main risks are
+      defensive injuries and potential disease exposure, not unprovoked attacks.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick reference</h2>
+
+    <div style="overflow:auto; border:1px solid #e5e7eb; border-radius:12px;">
+      <table style="width:100%; border-collapse:collapse; font-size:14px;">
+        <thead>
+          <tr style="background:#f3f4f6;">
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              Situation
+            </th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              Risk level
+            </th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              Why
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Seeing a groundhog at a distance
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Low
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              They typically flee when approached
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Dog chasing or cornering a groundhog
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Medium
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Defensive bites and scratches possible
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Attempting to handle or trap one
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              High
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Most bites occur during handling
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px;">
+              Groundhog living under a structure
+            </td>
+            <td style="padding:10px;">
+              Medium
+            </td>
+            <td style="padding:10px;">
+              Increased chance of close encounters
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What’s going on</h2>
+    <p style="margin:0 0 10px;">
+      Groundhogs are prey animals. Their primary defense is avoidance, not
+      aggression. When threatened, they may hiss, show their teeth, or stand
+      their ground briefly before retreating to a burrow.
+    </p>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Defensive behavior:</strong> Biting and scratching happen almost
+        exclusively when escape isn’t possible.
+      </li>
+      <li>
+        <strong>Strong teeth:</strong> Groundhogs can chew through wood and roots;
+        bites can cause puncture wounds.
+      </li>
+      <li>
+        <strong>Disease risk:</strong> Like many wild mammals, they can carry
+        parasites and diseases, though serious transmission is uncommon.
+      </li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to do (safe order)</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Keep distance.</strong> Don’t attempt to handle or corner a
+        groundhog.
+      </li>
+      <li>
+        <strong>Control pets.</strong> Leash dogs or supervise outdoor time if a
+        groundhog is present.
+      </li>
+      <li>
+        <strong>Remove attractants.</strong> Secure gardens, eliminate brush
+        piles, and reduce cover near structures.
+      </li>
+      <li>
+        <strong>Use exclusion.</strong> Install fencing or barriers (like
+        hardware cloth L-footers) to prevent access under structures.
+      </li>
+      <li>
+        <strong>Call a professional if needed.</strong> Especially if the animal
+        is injured, acting unusually, or living where contact is likely.
+      </li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Letting pets “handle it”:</strong> This often leads to injuries
+        for both the pet and the animal.
+      </li>
+      <li>
+        <strong>Trying to scare or corner the animal:</strong> Increases the risk
+        of defensive behavior.
+      </li>
+      <li>
+        <strong>Ignoring burrows near play areas:</strong> Raises the chance of
+        surprise encounters.
+      </li>
+      <li>
+        <strong>Assuming all wildlife is harmless:</strong> Even non-aggressive
+        animals can injure when threatened.
+      </li>
+    </ul>
+  </section>
+
+  {faqs.length ? (
+    <section
+      style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;"
+    >
+      <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+      {faqs.map((f) => (
+        <div style="margin-bottom:14px;">
+          <div style="font-weight:700; margin-bottom:4px;">{f.q}</div>
+          <div style="color:#374151;">{f.a}</div>
+        </div>
+      ))}
+    </section>
+  ) : null}
+
+  <RelatedPages tags={tags} />
+
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        General wildlife-safety guidance and common behavior patterns for
+        burrowing mammals.
+      </li>
+      <li>
+        Informational only; consult medical or veterinary professionals after
+        bites or scratches.
+      </li>
+    </ul>
+  </section>
+
+  {faqJsonLd ? (
+    <script type="application/ld+json">
+      {JSON.stringify(faqJsonLd)}
+    </script>
+  ) : null}
+</BaseLayout>
+
