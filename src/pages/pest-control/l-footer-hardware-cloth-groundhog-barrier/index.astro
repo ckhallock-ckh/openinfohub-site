@@ -1,0 +1,289 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import RelatedPages from "../../../components/RelatedPages.astro";
+
+// ✅ Always export a LITERAL object
+export const frontmatter = {
+  title: "How to install an L-footer hardware cloth barrier to stop groundhogs",
+  description:
+    "A step-by-step guide to installing an L-footer (buried hardware cloth) to prevent groundhogs from digging under decks, sheds, and fences—plus common mistakes to avoid.",
+  canonical:
+    "https://openinfohub.net/pest-control/l-footer-hardware-cloth-groundhog-barrier/",
+  updated: "2026-02-09",
+  tags: [
+    "pest-control",
+    "groundhog",
+    "exclusion",
+    "deterrence",
+    "burrows",
+    "fencing",
+  ],
+};
+
+const { title, description, canonical, updated, tags } = frontmatter;
+
+// ✅ Only include FAQ schema if you have real FAQs
+const faqs = [
+  {
+    q: "What is an L-footer and why does it work for groundhogs?",
+    a: "An L-footer is buried wire mesh laid in an “L” shape: a vertical section blocks entry, and a horizontal apron extends outward underground. When a groundhog tries to dig at the base, it hits the mesh and usually gives up or moves on.",
+  },
+  {
+    q: "How deep should hardware cloth be buried for groundhogs?",
+    a: "A common DIY target is roughly 10–12 inches deep for the vertical section, with an outward apron extending about 12–24 inches. The key is the outward apron: it defeats the “dig-under” behavior better than depth alone.",
+  },
+  {
+    q: "What mesh size should I use for groundhog exclusion?",
+    a: "Use heavy-gauge galvanized hardware cloth (often 1/2-inch mesh) or similar sturdy welded wire. Thin chicken wire is easy to deform and is not reliable for digging animals.",
+  },
+  {
+    q: "Should I seal under a deck or shed if a burrow is active?",
+    a: "No. Don’t seal an active burrow or you can trap an animal inside or force it to create a new exit. Confirm inactivity or resolve removal/exclusion first, then install the barrier.",
+  },
+  {
+    q: "Can I do an L-footer along a fence line?",
+    a: "Yes. It’s one of the best ways to stop digging under fences. Secure the mesh firmly to the fence and add an outward apron on the ground side where digging occurs.",
+  },
+];
+
+const faqJsonLd =
+  faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
+    <a href="/">Home</a> → <a href="/pest-control/">Pest Control</a> →{" "}
+    <strong>Exclusion</strong>
+  </nav>
+
+  <h1 style="margin:0 0 6px;">{title}</h1>
+  <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+    Updated <time datetime={updated}>{updated}</time>
+  </div>
+
+  <section
+    style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; background:#fafafa; margin-bottom:18px;"
+  >
+    <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
+    <p style="margin:0;">
+      The most reliable DIY way to stop groundhogs digging under a deck, shed, or
+      fence is an <strong>L-footer barrier</strong>: attach sturdy wire mesh
+      (hardware cloth or heavy welded wire) vertically to block access, then
+      bury a horizontal mesh “apron” extending outward. Groundhogs typically dig
+      at the edge—when they hit the hidden apron, they can’t tunnel under and
+      usually move on.
+    </p>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Quick reference</h2>
+
+    <div style="overflow:auto; border:1px solid #e5e7eb; border-radius:12px;">
+      <table style="width:100%; border-collapse:collapse; font-size:14px;">
+        <thead>
+          <tr style="background:#f3f4f6;">
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              Situation
+            </th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              Best move
+            </th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid #e5e7eb;">
+              Why
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Digging under deck/shed edge
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              L-footer barrier around perimeter
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Stops “dig-under” at the exact attack point
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Digging under a fence
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Mesh attached to fence + outward apron
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Prevents tunneling under without needing extreme depth
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Suspected active burrow nearby
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Confirm activity / resolve animal issue first
+            </td>
+            <td style="padding:10px; border-bottom:1px solid #e5e7eb;">
+              Sealing too early can trap an animal or create new exits
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px;">
+              Soft spots / settlement near structures
+            </td>
+            <td style="padding:10px;">
+              Exclusion first, then backfill/compact repairs
+            </td>
+            <td style="padding:10px;">
+              Fixing soil before exclusion often leads to repeat digging
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What’s going on</h2>
+    <p style="margin:0 0 10px;">
+      Groundhogs and similar digging animals usually start at the edge—right
+      where the structure meets the soil—because that’s the easiest spot to
+      widen into a tunnel. Simply burying mesh straight down can still fail if
+      the animal backs up and digs farther out. The L-footer works because it
+      blocks both the entrance <em>and</em> the “dig-under” path.
+    </p>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Vertical section:</strong> blocks access under the edge.
+      </li>
+      <li>
+        <strong>Horizontal apron:</strong> stops tunneling underneath even if
+        they dig at the base.
+      </li>
+      <li>
+        <strong>Fasteners matter:</strong> if the mesh isn’t secured, animals
+        can push or pull it loose.
+      </li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">What to do (safe order)</h2>
+    <ol style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Confirm you’re not sealing an active burrow.</strong> If a burrow
+        is active, handle removal/exclusion first—don’t trap an animal inside.
+      </li>
+      <li>
+        <strong>Pick the mesh.</strong> Use sturdy galvanized hardware cloth or
+        heavy welded wire. Avoid thin chicken wire for digging animals.
+      </li>
+      <li>
+        <strong>Plan your layout.</strong> You’re creating an “L” shape: a
+        vertical face plus an outward underground apron.
+      </li>
+      <li>
+        <strong>Dig a narrow trench along the edge.</strong> Aim for a trench
+        roughly 10–12 inches deep where practical, and wide enough to lay an
+        outward apron (commonly 12–24 inches).
+      </li>
+      <li>
+        <strong>Attach the vertical section first.</strong> Fasten mesh to the
+        deck skirt, shed base, or fence with appropriate screws/washers or
+        staples (depending on material). Overlap seams and fasten them together.
+      </li>
+      <li>
+        <strong>Lay the apron outward.</strong> Bend the mesh at a right angle
+        and lay the horizontal portion outward away from the structure.
+      </li>
+      <li>
+        <strong>Backfill and compact.</strong> Add soil in layers and tamp it so
+        it doesn’t settle into a trough that becomes a “dig here” cue.
+      </li>
+      <li>
+        <strong>Close off gaps and corners.</strong> Corners are weak points—use
+        extra overlap and secure them tightly.
+      </li>
+      <li>
+        <strong>Monitor for a week.</strong> Look for new digging attempts along
+        the edge; reinforce any spots that show activity.
+      </li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom:18px;">
+    <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        <strong>Sealing while active:</strong> can trap an animal or force a new
+        exit somewhere else.
+      </li>
+      <li>
+        <strong>Using chicken wire:</strong> it’s often too weak and can be
+        pushed open.
+      </li>
+      <li>
+        <strong>No outward apron:</strong> digging animals may simply tunnel
+        under a vertical-only barrier.
+      </li>
+      <li>
+        <strong>Loose seams/corners:</strong> gaps and corners are where animals
+        exploit weak points.
+      </li>
+      <li>
+        <strong>Backfilling without compaction:</strong> settling creates a
+        trench-like edge that invites digging.
+      </li>
+    </ul>
+  </section>
+
+  {faqs.length ? (
+    <section
+      style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;"
+    >
+      <h2 style="margin:0 0 10px; font-size:18px;">FAQ</h2>
+      {faqs.map((f) => (
+        <div style="margin-bottom:14px;">
+          <div style="font-weight:700; margin-bottom:4px;">{f.q}</div>
+          <div style="color:#374151;">{f.a}</div>
+        </div>
+      ))}
+    </section>
+  ) : null}
+
+  <RelatedPages tags={tags} />
+
+  <section style="font-size:13px; color:#6b7280;">
+    <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
+    <ul style="margin:0; padding-left:18px;">
+      <li>
+        General wildlife-control best practices: durable prevention is primarily
+        physical exclusion (mesh/fencing) plus reducing attractants.
+      </li>
+      <li>
+        This page assumes typical residential conditions; adapt depth/width based
+        on soil, obstacles, and local code/structure constraints.
+      </li>
+      <li>
+        Informational only; follow local rules and use humane/legal methods.
+      </li>
+    </ul>
+  </section>
+
+  {faqJsonLd ? (
+    <script type="application/ld+json">
+      {JSON.stringify(faqJsonLd)}
+    </script>
+  ) : null}
+</BaseLayout>
+
