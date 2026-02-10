@@ -1,9 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// Pull all pages that export `frontmatter`
-// NOTE: This assumes article pages use:
-// export const frontmatter = { title, description, tags, updated, canonical };
+// Pull all pages under pest-control
 const modules = import.meta.glob("./pest-control/**/index.astro", { eager: true });
 
 // Build a list of pages (excluding the hub itself)
@@ -11,7 +9,6 @@ const allPages = Object.entries(modules)
   .map(([path, mod]) => {
     const fm = mod.frontmatter ?? {};
 
-    // Fallbacks if a module exposes metadata via exports instead of frontmatter
     const pageTitle = fm.title ?? mod.title ?? null;
     const canonical = fm.canonical ?? mod.canonical ?? null;
 

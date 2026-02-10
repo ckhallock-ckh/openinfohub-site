@@ -9,25 +9,32 @@ const canonical = "https://openinfohub.net/pest-control/";
 // Get all child guide pages
 const pages = await Astro.glob("./*/index.astro");
 
-function titleFromSlug(slug) {
+function titleFromSlug(slug: string) {
   return slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
+// Force trailing slashes on internal links to avoid GSC redirect URL discoveries
+function withTrailingSlash(url: string) {
+  if (!url) return url;
+
+  // Preserve query string and hash if present
+  const match = url.match(/^([^?#]*)(.*)$/);
+  const base = match?.[1] ?? url;
+  const rest = match?.[2] ?? "";
+
+  if (base.endsWith("/")) return base + rest;
+  return base + "/" + rest;
+}
+
 const guides = pages
-  .map((p) => {
-    const parts = p.url.split("/").filter(Boolean);
+  .map((p: any) => {
+    const parts = String(p.url).split("/").filter(Boolean);
     const slug = parts[parts.length - 1];
 
     return {
-      url: p.url,
-      title:
-        p.frontmatter?.title ??
-        p.title ??
-        titleFromSlug(slug),
-      description:
-        p.frontmatter?.description ??
-        p.description ??
-        "",
+      url: withTrailingSlash(String(p.url)),
+      title: p.frontmatter?.title ?? p.title ?? titleFromSlug(slug),
+      description: p.frontmatter?.description ?? p.description ?? "",
     };
   })
   .sort((a, b) => a.title.localeCompare(b.title));
@@ -43,7 +50,9 @@ const guides = pages
     Practical answers for common pest problems—what’s normal, what’s not, and what to do next.
   </p>
 
-  <section style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;">
+  <section
+    style="border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin-bottom:18px;"
+  >
     <h2 style="margin:0 0 10px; font-size:18px;">Start here</h2>
 
     {guides.length ? (
@@ -74,4 +83,3 @@ const guides = pages
     </ul>
   </section>
 </BaseLayout>
-
