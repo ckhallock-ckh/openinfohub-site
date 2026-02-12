@@ -13,59 +13,63 @@ export const frontmatter = {
 
 const { title, description, canonical, updated, tags } = frontmatter;
 
-// Simple FAQ schema (safe, helpful)
+// Avoid Astro.url dependency; derive pathname from canonical.
+const currentUrl = new URL(canonical).pathname;
+
+// Simple FAQ schema (ASCII-safe text)
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
+  mainEntity: [
     {
       "@type": "Question",
-      "name": "How deep are groundhog burrows?",
-      "acceptedAnswer": {
+      name: "How deep are groundhog burrows?",
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": "Groundhog burrows are often surprisingly extensive. Depth varies by soil and site, but the main tunnels are commonly several feet below the surface, with chambers and multiple entrances. The more important risk is the size and length of the tunnel system—especially near slabs, decks, and sheds—because it can create voids and settling."
-      }
+        text: "Groundhog burrows are often surprisingly extensive. Depth varies by soil and site, but the main tunnels are commonly several feet below the surface, with chambers and multiple entrances. The more important risk is the size and length of the tunnel system, especially near slabs, decks, and sheds, because it can create voids and settling.",
+      },
     },
     {
       "@type": "Question",
-      "name": "Can a groundhog burrow cause a deck or shed to sink?",
-      "acceptedAnswer": {
+      name: "Can a groundhog burrow cause a deck or shed to sink?",
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": "Yes. Burrows can create underground voids that lead to soil settling, erosion, and loss of support—especially around shed pads, steps, patios, and deck footings. If you see a burrow under a structure, treat it as a higher-risk situation."
-      }
+        text: "Yes. Burrows can create underground voids that lead to soil settling, erosion, and loss of support, especially around shed pads, steps, patios, and deck footings. If you see a burrow under a structure, treat it as a higher-risk situation.",
+      },
     },
     {
       "@type": "Question",
-      "name": "Is it safe to fill a groundhog hole right away?",
-      "acceptedAnswer": {
+      name: "Is it safe to fill a groundhog hole right away?",
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": "Don’t fill or seal a burrow while it’s active. First confirm the animal is out (or removed), then install exclusion to prevent re-entry, and only then backfill in layers and compact. Sealing too early can trap an animal inside and cause odor problems."
-      }
+        text: "Do not fill or seal a burrow while it is active. First confirm the animal is out (or removed), then install exclusion to prevent re-entry, and only then backfill in layers and compact. Sealing too early can trap an animal inside and cause odor problems.",
+      },
     },
     {
       "@type": "Question",
-      "name": "What are signs the burrow is active?",
-      "acceptedAnswer": {
+      name: "What are signs the burrow is active?",
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": "Freshly dug soil at the entrance, a clear open hole with smooth edges, worn paths to food sources, and new digging after you smooth the dirt at the entrance (checked within 24–48 hours)."
-      }
+        text: "Freshly dug soil at the entrance, a clear open hole with smooth edges, worn paths to food sources, and new digging after you smooth the dirt at the entrance (checked within 24 to 48 hours).",
+      },
     },
     {
       "@type": "Question",
-      "name": "When should I call a professional wildlife control company?",
-      "acceptedAnswer": {
+      name: "When should I call a professional wildlife control company?",
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": "Call a pro if the burrow is under a deck/shed/steps/patio, near a foundation, if there are multiple entrances you can’t locate, if you suspect young, or if you need certainty before structural repairs. These are the cases where timing and exclusion details matter most."
-      }
-    }
-  ]
+        text: "Call a pro if the burrow is under a deck/shed/steps/patio, near a foundation, if there are multiple entrances you cannot locate, if you suspect young, or if you need certainty before structural repairs. These are the cases where timing and exclusion details matter most.",
+      },
+    },
+  ],
 };
 ---
 
-
 <BaseLayout title={title} description={description} canonical={canonical}>
   <nav style="font-size:13px; color:#6b7280; margin-bottom:10px;">
-    <a href="/home/">Home</a> → <a href="/home/pest-control/">Pest Control</a> → <strong>Groundhogs</strong>
+    <a href="/home/">Home</a> &nbsp;&gt;&nbsp;
+    <a href="/home/pest-control/">Pest Control</a> &nbsp;&gt;&nbsp;
+    <strong>Groundhogs</strong>
   </nav>
 
   <h1 style="margin:0 0 6px;">How deep are groundhog burrows and what damage can they cause?</h1>
@@ -77,7 +81,7 @@ const faqSchema = {
     <h2 style="margin:0 0 8px; font-size:18px;">Direct answer</h2>
     <p style="margin:0;">
       <strong>Groundhog burrows can run several feet deep and extend many feet long with chambers and multiple entrances.</strong>
-      The biggest practical problem isn’t the exact depth—it’s the <strong>underground voids and soil movement</strong> they create.
+      The biggest practical problem is not the exact depth. It is the <strong>underground voids and soil movement</strong> they create.
       If a burrow is near or under a <strong>deck, shed, steps, slab, or foundation</strong>, treat it as higher risk and focus on
       <strong>safe removal/exclusion first</strong>, then <strong>proper backfill and compaction</strong>.
     </p>
@@ -97,7 +101,7 @@ const faqSchema = {
         <tbody>
           <tr>
             <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Burrow in open yard, away from structures</td>
-            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Confirm activity → removal/exclusion → fill & compact</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Confirm activity &gt; removal/exclusion &gt; fill and compact</td>
             <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Lower structural risk; easier to verify inactivity</td>
           </tr>
           <tr>
@@ -111,7 +115,7 @@ const faqSchema = {
             <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Filling without exclusion often leads to re-digging</td>
           </tr>
           <tr>
-            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Multiple entrances / you can’t find the “main” hole</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Multiple entrances / you cannot find the main hole</td>
             <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Track entrances + consider professional help</td>
             <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Missed openings make DIY sealing fail</td>
           </tr>
@@ -125,7 +129,7 @@ const faqSchema = {
     <ul style="margin:0; padding-left:18px;">
       <li><strong>Multiple openings:</strong> often a main entrance plus one or more escape exits.</li>
       <li><strong>Long tunnels:</strong> runs can extend well beyond what you can see from the hole.</li>
-      <li><strong>Chambers:</strong> nesting/rest areas and separate “side areas” can exist inside the system.</li>
+      <li><strong>Chambers:</strong> nesting/rest areas and separate side areas can exist inside the system.</li>
       <li><strong>Site choice matters:</strong> edges of lawns, brush lines, and sheltered spaces under structures are common.</li>
     </ul>
   </section>
@@ -144,17 +148,17 @@ const faqSchema = {
   <section style="margin-bottom:18px;">
     <h2 style="margin:0 0 10px; font-size:18px;">What to do (safe order)</h2>
     <ol style="margin:0; padding-left:18px;">
-      <li><strong>Confirm activity:</strong> smooth the dirt at the entrance and check for fresh digging within 24–48 hours.</li>
+      <li><strong>Confirm activity:</strong> smooth the dirt at the entrance and check for fresh digging within 24 to 48 hours.</li>
       <li><strong>Locate other entrances:</strong> walk the perimeter (fence lines, brush edges, under-deck openings).</li>
-      <li><strong>Don’t seal an active burrow:</strong> avoid trapping an animal inside or creating odor problems.</li>
+      <li><strong>Do not seal an active burrow:</strong> avoid trapping an animal inside or creating odor problems.</li>
       <li><strong>Remove or exclude:</strong> once the animal is out (or removed), block re-entry with heavy-gauge mesh.</li>
       <li><strong>Backfill in lifts and compact:</strong> add soil in layers, compact each layer to reduce future settling.</li>
-      <li><strong>Prevent the “dig-under” comeback:</strong> bury hardware cloth or use an outward “L” footer at edges.</li>
+      <li><strong>Prevent the dig-under comeback:</strong> bury hardware cloth or use an outward L-footer at edges.</li>
     </ol>
   </section>
 
   <section style="margin-bottom:18px;">
-    <h2 style="margin:0 0 10px; font-size:18px;">How to backfill correctly (so it doesn’t sink again)</h2>
+    <h2 style="margin:0 0 10px; font-size:18px;">How to backfill correctly (so it does not sink again)</h2>
     <ul style="margin:0; padding-left:18px;">
       <li><strong>Do it after exclusion:</strong> otherwise they often reopen the same spot.</li>
       <li><strong>Use layers:</strong> backfill in several lifts, not one giant dump of loose soil.</li>
@@ -167,8 +171,8 @@ const faqSchema = {
   <section style="margin-bottom:18px;">
     <h2 style="margin:0 0 10px; font-size:18px;">Common mistakes</h2>
     <ul style="margin:0; padding-left:18px;">
-      <li>Sealing or filling a burrow while it’s active.</li>
-      <li>Assuming there’s only one entrance (missed exits = repeat problems).</li>
+      <li>Sealing or filling a burrow while it is active.</li>
+      <li>Assuming there is only one entrance (missed exits = repeat problems).</li>
       <li>Repairing a patio/steps before the burrow is addressed (damage returns).</li>
       <li>Backfilling without compaction (creates future sinkholes).</li>
       <li>Relying on repellents alone after a burrow is established.</li>
@@ -192,30 +196,30 @@ const faqSchema = {
 
     <h3 style="margin:0 0 6px; font-size:16px;">Is it safe to fill a groundhog hole right away?</h3>
     <p style="margin:0 0 12px;">
-      Don’t fill or seal an active burrow. Confirm the animal is out (or removed), install exclusion to prevent re-entry,
+      Do not fill or seal an active burrow. Confirm the animal is out (or removed), install exclusion to prevent re-entry,
       then backfill and compact properly. Sealing too early can trap an animal and create odor issues.
     </p>
 
     <h3 style="margin:0 0 6px; font-size:16px;">How do I tell if the burrow is active?</h3>
     <p style="margin:0;">
-      Fresh digging, a clear open entrance, worn paths, and new disturbance after you smooth the dirt at the entrance (checked within 24–48 hours)
+      Fresh digging, a clear open entrance, worn paths, and new disturbance after you smooth the dirt at the entrance (checked within 24 to 48 hours)
       are common signs of activity.
     </p>
   </section>
 
-  <RelatedPages tags={tags} currentUrl={Astro.url.pathname} />
+  <RelatedPages tags={tags} currentUrl={currentUrl} />
 
   <section style="font-size:13px; color:#6b7280;">
     <h2 style="margin:0 0 8px; font-size:16px;">Sources and assumptions</h2>
     <ul style="margin:0; padding-left:18px;">
       <li>General wildlife control best practices: confirm activity, remove/exclude first, then seal and compact.</li>
-      <li>Burrow “depth” varies widely; this page focuses on practical risks (voids, settlement) and safe remediation order.</li>
+      <li>Burrow depth varies widely; this page focuses on practical risks (voids, settlement) and safe remediation order.</li>
       <li>This page is informational and not a substitute for local legal guidance on wildlife handling or structural advice.</li>
     </ul>
   </section>
 
-  <script type="application/ld+json">
-    {JSON.stringify(faqSchema)}
-  </script>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema).replace(/</g, "\\u003c")}
+  />
 </BaseLayout>
-
